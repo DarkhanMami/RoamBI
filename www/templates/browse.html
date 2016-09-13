@@ -1,7 +1,12 @@
 <ion-view view-title="Browse">
-  <ion-content>
-    <h1>Browse</h1>
+  <ion-content ng-controller="BarCtrl">
+
+
 
     {{test}}
+
+    <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options"
+chart-dataset-override="datasetOverride"> </canvas>
+
   </ion-content>
 </ion-view>

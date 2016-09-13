@@ -12,7 +12,22 @@ angular.module('starter.controllers', [])
   // Form data for the login modal
 
 })
+.controller('TestCtrl', function($scope, Data) {
+    $scope.places = Data.getPlaces();
+    $scope.colNames = Data.getColNames();
 
+    // Test default name & columns
+    $scope.query = {
+        name: $scope.places[0],
+        colName1: $scope.colNames[4],
+        colName2: $scope.colNames[5]
+    }
+
+    $scope.updateData = function() {
+        $scope.result = Data.getNumbers($scope.query.name, $scope.query.colName1, $scope.query.colName2);
+    }
+
+})
 .controller('BrowseCtrl', function($scope) {
     $scope.test = "test";
 

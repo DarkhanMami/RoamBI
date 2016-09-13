@@ -1,0 +1,33 @@
+<ion-view view-title="Browse">
+  <ion-content>
+    <h1>Test</h1>
+    {{query}}
+    <div class="list">
+
+      <div class="item item-button-right">
+        Place
+        <select ng-model="query.name">
+          <option ng-repeat="p in places" value="{{p}}">{{p}}</option>
+        </select>
+      </div>
+      <div class="item item-button-right">
+        Column 1
+        <select ng-model="query.colName1">
+          <option ng-repeat="p in colNames" value="{{p}}">{{p}}</option>
+        </select>
+      </div>
+      <div class="item item-button-right">
+        Column 2
+        <select ng-model="query.colName2">
+          <option ng-repeat="p in colNames" value="{{p}}">{{p}}</option>
+        </select>
+      </div>
+      <div class="item">
+        <button class="button button-full" ng-click="updateData()">OK</button>
+      </div>
+      <hr>
+      {{result}}
+
+  </div>
+  </ion-content>
+</ion-view>

@@ -1228,7 +1228,7 @@ angular.module('starter.services', [])
         var col1 = -1;
         var col2 = -1;
         for (k in colNames) {
-            console.log(k);            
+            console.log(k);
             if (colNames[k] == colName1) {
                 console.log(colNames[k]);
                 console.log(colName1);
@@ -1256,7 +1256,8 @@ angular.module('starter.services', [])
         return {
             "code": 0,
             "message": "SUCCESS",
-            "data": [r1, r2]
+            "r1": r1,
+            "r2": r2
         }
       }
     }

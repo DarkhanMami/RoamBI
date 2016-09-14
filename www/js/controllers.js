@@ -13,8 +13,11 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 .controller('TestCtrl', function($scope, Data) {
-    $scope.places = Data.getPlaces();
     $scope.colNames = Data.getColNames();
+
+    console.log($scope.colNames[4]);
+
+    $scope.places = Data.getPlaces(1, $scope.colNames[4], $scope.colNames[5]);
 
     // Test default name & columns
     $scope.query = {
@@ -75,8 +78,9 @@ angular.module('starter.controllers', ['chart.js'])
   $scope.result = Data.getNumbers($scope.query.name, $scope.query.colName1, $scope.query.colName2);
 
 
+
   $scope.labels = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21','22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
-  
+
   $scope.series = [$scope.query.colName1, $scope.query.colName2];
 
   $scope.data = [

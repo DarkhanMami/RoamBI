@@ -1,12 +1,75 @@
 <ion-view view-title="Browse">
-  <ion-content ng-controller="BarCtrl">
+  <ion-content>
+
+	
 
 
+	<div class="row"> 
+		<div class="col col-33">  
+			<div class="row"> 
+				<button class="button button-large button-stable">
+			  		button-light
+				</button>
+			</div> 
+			<div class="row"> 
+				<button class="button button-large button-stable">
+				  	button-light
+				</button>
+			</div> 
+			<div class="row"> 
+				<button class="button button-large button-stable">
+			  		button-light
+				</button>
+			</div> 
+		</div>
 
-    {{test}}
+		<div class="col col-67">
 
-    <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options"
-chart-dataset-override="datasetOverride"> </canvas>
+			<canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride"> </canvas>
+
+
+		</div> 
+	</div>
+
+	<div class="row"> 
+		<div class="col col-20 col-offset-10"> 
+			<button class="button button-dark" ng-click="updateData(query.name, 'Замер', 'Резервуар')"> button-dark </button></div> 
+		<div class="col col-20 col-offset-10"> 
+			<button class="button button-dark" ng-click="updateData(query.name, 'Сдача нефти', 'добыча нефти')"> button-dark </button></div> 
+		<div class="col col-20 col-offset-10"> <button class="button button-dark"> button-dark </button></div> 
+		<div class="col col-20 col-offset-10"> <button class="button button-dark"> button-dark </button></div> 
+
+	</div>
+
+
+	<ion-scroll direction="y" style="height:100vh;">
+	    <div class="list">
+
+	      <div class="item" ng-repeat="p in places" ng-click="raw_selected(p)" ng-if="query.name==p" style="color:red; padding-top: 0px; padding-bottom: 0px;">
+	        <div class="row">
+	          <div class="col">{{p}}</div>
+	          <div class="col">{{result.r1[0]}}</div>
+	          <div class="col">{{result.r2[0]}}</div>
+	        </div>
+	          
+	      </div>
+	      
+	      <div class="item" ng-repeat="p in places" ng-click="raw_selected(p)" ng-if="query.name!=p" style="padding-top: 0px; padding-bottom: 0px;">
+	        <div class="row">
+	          <div class="col">{{p}}</div>
+	          <div class="col">{{result.r1[0]}}</div>
+	          <div class="col">{{result.r2[0]}}</div>
+	        </div>
+	      </div>
+
+	</div>
+	</ion-scroll>
+
+
 
   </ion-content>
 </ion-view>
+
+
+
+

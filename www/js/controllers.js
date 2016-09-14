@@ -27,21 +27,62 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.result = Data.getNumbers($scope.query.name, $scope.query.colName1, $scope.query.colName2);
     }
 
-})
-.controller('BrowseCtrl', function($scope) {
-    $scope.test = "test";
+    $scope.raw_selected = function(name) {
+      $scope.query.name = name;
+      $scope.result = Data.getNumbers(name, $scope.query.colName1, $scope.query.colName2);
+    }
 
 })
 
 
-.controller("BarCtrl", function ($scope) {
-  $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  $scope.series = ['Series A', 'Series B'];
+.controller("BarCtrl", function($scope, Data) {
+
+    $scope.places = Data.getPlaces();
+    $scope.colNames = Data.getColNames();
+
+    // Test default name & columns
+    $scope.query = {
+        name: $scope.places[0],
+        colName1: $scope.colNames[3],
+        colName2: $scope.colNames[5]
+    }
+
+  
+    $scope.updateData = function(name, colName1, colName2) {
+        $scope.result = Data.getNumbers(name, colName1, colName2);
+        $scope.data = [
+          $scope.result.r1,
+          $scope.result.r2
+        ];
+
+        $scope.series = [colName1, colName2];
+    }
+
+    $scope.raw_selected = function(name) {
+      $scope.query.name = name;
+      $scope.result = Data.getNumbers(name, $scope.query.colName1, $scope.query.colName2);
+      $scope.data = [
+          $scope.result.r1,
+          $scope.result.r2
+        ];
+
+      $scope.series = [colName1, colName2];
+    }
+
+
+  $scope.result = Data.getNumbers($scope.query.name, $scope.query.colName1, $scope.query.colName2);
+
+
+  $scope.labels = ['01', '02', '03', '04', '05', '06', '07','08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21','22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+  
+  $scope.series = [$scope.query.colName1, $scope.query.colName2];
 
   $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
+    $scope.result.r1,
+    $scope.result.r2
   ];
+
+
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
   $scope.options = {
     scales: {

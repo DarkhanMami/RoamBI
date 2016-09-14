@@ -47,7 +47,11 @@ angular.module('starter.controllers', ['chart.js'])
         colName2: $scope.colNames[5]
     }
 
-  
+    $scope.onClick = function (points, evt) {
+      console.log(points[1]._index);
+    };
+
+
     $scope.updateData = function(name, colName1, colName2) {
         $scope.result = Data.getNumbers(name, colName1, colName2);
         $scope.data = [
@@ -65,15 +69,13 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r1,
           $scope.result.r2
         ];
-
-      $scope.series = [colName1, colName2];
     }
 
 
   $scope.result = Data.getNumbers($scope.query.name, $scope.query.colName1, $scope.query.colName2);
 
 
-  $scope.labels = ['01', '02', '03', '04', '05', '06', '07','08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21','22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+  $scope.labels = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21','22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
   
   $scope.series = [$scope.query.colName1, $scope.query.colName2];
 

@@ -13,6 +13,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 .controller('TestCtrl', function($scope, Data) {
+
     $scope.colNames = Data.getColNames();
 
     console.log($scope.colNames[4]);
@@ -40,29 +41,68 @@ angular.module('starter.controllers', ['chart.js'])
 
 .controller("BarCtrl", function($scope, Data) {
 
-    $scope.places = Data.getPlaces();
     $scope.colNames = Data.getColNames();
+    $scope.places = Data.getPlaces(1, $scope.colNames[3], $scope.colNames[5]);
+    $scope.date = "1/01/2016";
 
     // Test default name & columns
     $scope.query = {
-        name: $scope.places[0],
+        name: $scope.places[0].name,
         colName1: $scope.colNames[3],
         colName2: $scope.colNames[5]
     }
 
     $scope.onClick = function (points, evt) {
-      console.log(points[1]._index);
+      $scope.places = Data.getPlaces(points[1]._index + 1, $scope.query.colName1, $scope.query.colName2);
+
+      $scope.date = "" + (points[1]._index + 1) + "/01/2016";
+      $scope.$apply();
     };
 
 
     $scope.updateData = function(name, colName1, colName2) {
         $scope.result = Data.getNumbers(name, colName1, colName2);
+        $scope.query.colName1 = colName1;
+        $scope.query.colName2 = colName2;
+
         $scope.data = [
           $scope.result.r1,
           $scope.result.r2
         ];
 
         $scope.series = [colName1, colName2];
+
+        $scope.places = Data.getPlaces(1, colName1, colName2);
+
+
+        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+      
+        $scope.options = {
+          scales: {
+            yAxes: [
+              {
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left'
+              },
+              {
+                id: 'y-axis-2',
+                type: 'linear',
+                display: true,
+                position: 'right'
+              }
+            ]
+          },
+
+
+          "legend": {
+          "display": true,
+          "position": "top"
+        }
+          
+  };
+
     }
 
     $scope.raw_selected = function(name) {
@@ -106,6 +146,13 @@ angular.module('starter.controllers', ['chart.js'])
           position: 'right'
         }
       ]
-    }
+    },
+
+
+    "legend": {
+    "display": true,
+    "position": "top"
+  }
+    
   };
 });

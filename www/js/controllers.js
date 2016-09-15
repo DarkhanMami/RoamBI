@@ -57,10 +57,20 @@ angular.module('starter.controllers', ['chart.js'])
         colName2: $scope.colNames[5]
     }
 
+    $scope.b2 = Data.getSingleData($scope.query.name, 1, "Сдача нефти", "добыча нефти");
+    $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
+    $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
+
+
     $scope.onClick = function (points, evt) {
       $scope.places = Data.getPlaces(points[1]._index + 1, $scope.query.colName1, $scope.query.colName2);
 
       $scope.date = "" + (points[1]._index + 1) + "/01/2016";
+      $scope.b2 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Сдача нефти", "добыча нефти");
+      $scope.b3 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Рас. т/р", "техрежим");
+      $scope.b4 = Data.getSingleData($scope.query.name, points[1]._index + 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");  
+
+
       $scope.$apply();
     };
 
@@ -110,6 +120,7 @@ angular.module('starter.controllers', ['chart.js'])
 
     }
 
+
     $scope.raw_selected = function(name) {
       $scope.query.name = name;
       $scope.result = Data.getNumbers(name, $scope.query.colName1, $scope.query.colName2);
@@ -117,6 +128,10 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r1,
           $scope.result.r2
         ];
+
+      $scope.b2 = Data.getSingleData($scope.query.name, 1, "Сдача нефти", "добыча нефти");
+      $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
+      $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");  
     }
 
 
@@ -132,6 +147,9 @@ angular.module('starter.controllers', ['chart.js'])
     $scope.result.r1,
     $scope.result.r2
   ];
+
+
+  $scope.colors = ['#72C02C', '#3498DB', '#717984', '#F1C40F'];
 
 
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
@@ -160,4 +178,9 @@ angular.module('starter.controllers', ['chart.js'])
   }
 
   };
+
+
+
+
+
 });

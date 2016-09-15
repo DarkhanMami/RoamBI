@@ -2,6 +2,9 @@
   <ion-content>
     <h1>Test</h1>
     {{query}}
+    {{b2}} <br>
+    {{b3}} <br>
+    {{b4}} <br>
     <div class="list">
 
       <div class="item item-button-right">
@@ -38,9 +41,9 @@
           <div class="col">{{result.r1[0]}}</div>
           <div class="col">{{result.r2[0]}}</div>
         </div>
-          
+
       </div>
-      
+
       <div class="item" ng-repeat="p in places" ng-click="raw_selected(p)" ng-if="query.name!=p" style="padding-top: 0px; padding-bottom: 0px;">
         <div class="row">
           <div class="col">{{p}}</div>

@@ -27,6 +27,11 @@ angular.module('starter.controllers', ['chart.js'])
         colName2: $scope.colNames[5]
     }
 
+    $scope.b2 = Data.getSingleData("UAZ_005U", 31, "Сдача нефти", "добыча нефти");
+    $scope.b3 = Data.getSingleData("UAZ_005U", 31, "Рас. т/р", "техрежим");
+    $scope.b4 = Data.getSingleData("UAZ_005U", 31, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
+
+
     $scope.updateData = function() {
         $scope.result = Data.getNumbers($scope.query.name, $scope.query.colName1, $scope.query.colName2);
     }
@@ -76,7 +81,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 
         $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-      
+
         $scope.options = {
           scales: {
             yAxes: [
@@ -100,7 +105,7 @@ angular.module('starter.controllers', ['chart.js'])
           "display": true,
           "position": "top"
         }
-          
+
   };
 
     }
@@ -153,6 +158,6 @@ angular.module('starter.controllers', ['chart.js'])
     "display": true,
     "position": "top"
   }
-    
+
   };
 });

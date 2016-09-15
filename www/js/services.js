@@ -1219,6 +1219,30 @@ angular.module('starter.services', [])
     var colNames = ["Объект","Месяц","Дата","Замер","техрежим","Резервуар","Сдача нефти","техрежим нефть","добыча нефти","Рас. т/р","зам. доб. с нак","Доб. ж. по рез. с нак.","Сд. н с нак.","доб. н. по рез. с нак"];
 
     return {
+        getSingleData: function (name, day, colName1, colName2) {
+            day = "" + day + "/1/2016"
+            var col1 = -1;
+            var col2 = -1;
+            for (k in colNames) {
+                if (colNames[k] == colName1) {
+                    col1 = k;
+                }
+                if (colNames[k] == colName2) {
+                    col2 = k;
+                }
+            }
+            if (col1 == -1 || col2 == -1) {
+                return {
+                    "code": 1,
+                    "message": "Wrong column names"
+                }
+            }
+            var obj = {
+                'v1': smartData[name + day][col1],
+                'v2': smartData[name + day][col2],
+            }
+            return obj;
+        },
       getPlaces: function (day, colName1, colName2) {
           day = "" + day + "/1/2016"
           var col1 = -1;

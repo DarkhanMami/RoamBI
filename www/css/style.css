@@ -1,4 +1,9 @@
 /* Empty. Add your own CSS if you like */
+div{
+
+	font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+
+}
 .text-right{
      text-align:right;
 }
@@ -29,13 +34,26 @@
 	text-align:right;
 }
 .color-danger{
-    color: rgb(243, 20, 94);
+    color: #6d3347;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #ff0b7a;
+}
+.color-danger-graph{
+    color: #ff0b7a;
+
 }
 .color-good{
-    color: rgb(20, 243, 121);
+    
+    color: #4e7d27;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #83de32;
+
 }
 .color-warning{
-    color: rgb(243, 228, 20);
+    color: #777d27;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #f9ff00;
+
 }
 .interval-small{
 line-height: 1.1;
@@ -44,13 +62,19 @@ line-height: 1.1;
 line-height: 1.5;
 }
 .button{
-	border-color: #dddddd;
-	background-color: #ffffff;
+	
+	background: #19191E;
+    color: #ffffff;
 	width: 95%; 
+
 }
-.button-active{
-	border-color: #dddddd;
-	background-color: #f8f8f8;
+.button-row{
+
+    color: #ffffff;
+	width: 95%; 
+
+	background: #2D2D32;
+    border: 5px solid #19191E;
 }
 
 .right {
@@ -60,8 +84,9 @@ line-height: 1.5;
     display:block;
     float:right;
 
-    border-color: #ffffff;
-	background-color: #ffffff;
+    
+	background: #19191E;
+    color: #ffffff;
 }
 
 .row-1{
@@ -72,4 +97,51 @@ line-height: 1.5;
 }
 .padding-h{
 	 padding-left: 2%;
+}
+
+
+
+.black-theme {
+    background: #19191E;
+    color: #ffffff;
+   
+}
+
+.black-table{
+	background: #19191E;
+    color: #ffffff;
+}
+.table-heading{
+	font-weight: bold; 
+	text-align: center;
+	padding-top: 0px; 
+	padding-bottom: 0px;
+	background: #2D2D32;
+	color: #ffffff;
+	border-color: #2D2D32;
+}
+.table-heading2{
+	 
+	font-weight: bold; 
+	padding-top: 0px; 
+	padding-bottom: 0px;
+	background: #2D2D32;
+	border-color: #2D2D32;
+ 	
+}
+
+.table-content{
+	color: #CCC;
+	padding-top: 0px; 
+	padding-bottom: 0px;
+	background: #50505A;
+	border-color: #2D2D32;
+
+
+}
+.table-input{
+	font-weight: bold; 
+	color:#83de32;
+	background: #50505A;
+	border-color: #50505A; 
 }

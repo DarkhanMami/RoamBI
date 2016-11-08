@@ -44,7 +44,7 @@ angular.module('starter.controllers', ['chart.js'])
 })
 
 
-.controller("BarCtrl", function($scope, Data) {
+.controller("BarCtrl", function($scope, Data, $ionicLoading) {
 
     $scope.colNames = Data.getColNames();
     $scope.places = Data.getPlaces(1, $scope.colNames[3], $scope.colNames[5]);
@@ -76,6 +76,13 @@ angular.module('starter.controllers', ['chart.js'])
 
 
     $scope.updateData = function(name, colName1, colName2) {
+/*
+        $ionicLoading.show({
+          duration: 500,
+          template: '<ion-spinner icon="ios"></ion-spinner>'
+        });
+*/
+
         $scope.result = Data.getNumbers(name, colName1, colName2);
         $scope.query.colName1 = colName1;
         $scope.query.colName2 = colName2;
@@ -85,10 +92,53 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r2
         ];
 
-        $scope.series = [colName1, colName2];
+        //$scope.series = [colName1, colName2];
 
         $scope.places = Data.getPlaces(1, colName1, colName2);
 
+
+        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+
+        $scope.options = {        
+          scales: {
+            yAxes: [
+              {
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left'
+              },
+              {
+                id: 'y-axis-2',
+                type: 'linear',
+                display: true,
+                position: 'right'
+              }
+            ]
+          },
+
+
+          "legend": {
+          "display": false,
+          "position": "top"
+        }
+
+  };
+
+    }
+
+
+   $scope.updateDataTest3 = function(name, colName1, colName2) {
+
+        $scope.query.colName1 = colName1;
+        $scope.query.colName2 = colName2;
+
+        $scope.data = [
+          [28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35],
+          [65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14]
+        ];
+
+        //$scope.series = [colName1, colName2];
 
         $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
 
@@ -116,9 +166,61 @@ angular.module('starter.controllers', ['chart.js'])
           "position": "top"
         }
 
-  };
+        };
 
     }
+
+
+   $scope.updateDataTest4 = function(name, colName1, colName2) {
+
+        $scope.query.colName1 = colName1;
+        $scope.query.colName2 = colName2;
+
+        $scope.data = [
+          [65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14],
+          [28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35]
+        ];
+
+        //$scope.series = [colName1, colName2];
+
+        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+
+        $scope.options = {
+          scales: {
+            yAxes: [
+              {
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left'
+              },
+              {
+                id: 'y-axis-2',
+                type: 'linear',
+                display: true,
+                position: 'right'
+              }
+            ]
+          },
+
+
+          "legend": {
+          "display": true,
+          "position": "top"
+        }
+
+        };
+
+    }
+
+
+
+
+
+
+
+
+
 
 
     $scope.raw_selected = function(name) {
@@ -139,7 +241,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 
 
-  $scope.labels = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21','22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+  $scope.labels = ['1', '', '', '', '5', '', '','', '', '10', '', '', '', '', '15', '', '', '', '', '20', '','', '', '', '25', '', '', '', '', '30', ''];
 
   $scope.series = [$scope.query.colName1, $scope.query.colName2];
 
@@ -173,7 +275,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 
     "legend": {
-    "display": true,
+    "display": false,
     "position": "top"
   }
 

@@ -57,6 +57,7 @@ angular.module('starter.controllers', ['chart.js'])
         colName2: $scope.colNames[5]
     }
 
+    $scope.b1 = Data.getSingleData($scope.query.name, 1, "Замер", "Резервуар");
     $scope.b2 = Data.getSingleData($scope.query.name, 1, "Сдача нефти", "добыча нефти");
     $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
     $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
@@ -66,6 +67,7 @@ angular.module('starter.controllers', ['chart.js'])
       $scope.places = Data.getPlaces(points[1]._index + 1, $scope.query.colName1, $scope.query.colName2);
 
       $scope.date = "" + (points[1]._index + 1) + "/01/2016";
+      $scope.b1 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Замер", "Резервуар");
       $scope.b2 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Сдача нефти", "добыча нефти");
       $scope.b3 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Рас. т/р", "техрежим");
       $scope.b4 = Data.getSingleData($scope.query.name, points[1]._index + 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");  
@@ -123,102 +125,9 @@ angular.module('starter.controllers', ['chart.js'])
           "position": "top"
         }
 
-  };
+       };
 
     }
-
-
-   $scope.updateDataTest3 = function(name, colName1, colName2) {
-
-        $scope.query.colName1 = colName1;
-        $scope.query.colName2 = colName2;
-
-        $scope.data = [
-          [28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35],
-          [65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14]
-        ];
-
-        //$scope.series = [colName1, colName2];
-
-        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-
-        $scope.options = {
-          scales: {
-            yAxes: [
-              {
-                id: 'y-axis-1',
-                type: 'linear',
-                display: true,
-                position: 'left'
-              },
-              {
-                id: 'y-axis-2',
-                type: 'linear',
-                display: true,
-                position: 'right'
-              }
-            ]
-          },
-
-
-          "legend": {
-          "display": true,
-          "position": "top"
-        }
-
-        };
-
-    }
-
-
-   $scope.updateDataTest4 = function(name, colName1, colName2) {
-
-        $scope.query.colName1 = colName1;
-        $scope.query.colName2 = colName2;
-
-        $scope.data = [
-          [65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14],
-          [28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35]
-        ];
-
-        //$scope.series = [colName1, colName2];
-
-        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-
-        $scope.options = {
-          scales: {
-            yAxes: [
-              {
-                id: 'y-axis-1',
-                type: 'linear',
-                display: true,
-                position: 'left'
-              },
-              {
-                id: 'y-axis-2',
-                type: 'linear',
-                display: true,
-                position: 'right'
-              }
-            ]
-          },
-
-
-          "legend": {
-          "display": true,
-          "position": "top"
-        }
-
-        };
-
-    }
-
-
-
-
-
-
-
 
 
 
@@ -231,6 +140,7 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r2
         ];
 
+      $scope.b1 = Data.getSingleData($scope.query.name, 1, "Замер", "Резервуар");
       $scope.b2 = Data.getSingleData($scope.query.name, 1, "Сдача нефти", "добыча нефти");
       $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
       $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");  

@@ -46,7 +46,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 .controller("BarCtrl", function($scope, Data, $ionicLoading) {
 
-    
+
     $scope.colNames = Data.getColNames();
     $scope.places = Data.getPlaces(1, $scope.colNames[3], $scope.colNames[5]);
     $scope.date = "1/01/2016";
@@ -58,6 +58,7 @@ angular.module('starter.controllers', ['chart.js'])
         colName2: $scope.colNames[5]
     }
 
+    $scope.b1 = Data.getSingleData($scope.query.name, 1, "Замер", "Резервуар");
     $scope.b2 = Data.getSingleData($scope.query.name, 1, "Сдача нефти", "добыча нефти");
     $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
     $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
@@ -67,6 +68,7 @@ angular.module('starter.controllers', ['chart.js'])
       $scope.places = Data.getPlaces(points[1]._index + 1, $scope.query.colName1, $scope.query.colName2);
 
       $scope.date = "" + (points[1]._index + 1) + "/01/2016";
+      $scope.b1 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Замер", "Резервуар");
       $scope.b2 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Сдача нефти", "добыча нефти");
       $scope.b3 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Рас. т/р", "техрежим");
       $scope.b4 = Data.getSingleData($scope.query.name, points[1]._index + 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
@@ -96,6 +98,16 @@ angular.module('starter.controllers', ['chart.js'])
         //$scope.series = [colName1, colName2];
 
         $scope.places = Data.getPlaces(1, colName1, colName2);
+        console.log('looping');
+        angular.forEach($scope.places, function(value, key) {
+          if (value.name == name) {
+              $scope.selectedItem = {
+                  "name": name,
+                  "v1": value.v1,
+                  "v2": value.v2,
+              }
+          }
+        }, null);
 
 
         $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
@@ -124,105 +136,12 @@ angular.module('starter.controllers', ['chart.js'])
           "position": "top"
         }
 
-  };
+       };
 
     }
 
 
-   $scope.updateDataTest3 = function(name, colName1, colName2) {
-
-        $scope.query.colName1 = colName1;
-        $scope.query.colName2 = colName2;
-
-        $scope.data = [
-          [28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35],
-          [65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14]
-        ];
-
-        //$scope.series = [colName1, colName2];
-
-        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-
-        $scope.options = {
-          scales: {
-            yAxes: [
-              {
-                id: 'y-axis-1',
-                type: 'linear',
-                display: true,
-                position: 'left'
-              },
-              {
-                id: 'y-axis-2',
-                type: 'linear',
-                display: true,
-                position: 'right'
-              }
-            ]
-          },
-
-
-          "legend": {
-          "display": true,
-          "position": "top"
-        }
-
-        };
-
-    }
-
-
-   $scope.updateDataTest4 = function(name, colName1, colName2) {
-
-        $scope.query.colName1 = colName1;
-        $scope.query.colName2 = colName2;
-
-        $scope.data = [
-          [65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14, 65, 59, 80, 81, 56, 55, 40, 84, 32, 14],
-          [28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35, 28, 48, 40, 19, 86, 27, 90, 45, 22, 35]
-        ];
-
-        //$scope.series = [colName1, colName2];
-
-        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-
-        $scope.options = {
-          scales: {
-            yAxes: [
-              {
-                id: 'y-axis-1',
-                type: 'linear',
-                display: true,
-                position: 'left'
-              },
-              {
-                id: 'y-axis-2',
-                type: 'linear',
-                display: true,
-                position: 'right'
-              }
-            ]
-          },
-
-
-          "legend": {
-          "display": true,
-          "position": "top"
-        }
-
-        };
-
-    }
-
-
-
-
-
-
-
-
-
-
+    $scope.updateData($scope.query.name, $scope.query.colName1, $scope.query.colName2);
 
     $scope.raw_selected = function(name) {
       $scope.query.name = name;
@@ -231,7 +150,16 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r1,
           $scope.result.r2
         ];
-
+        angular.forEach($scope.places, function(value, key) {
+          if (value.name == name) {
+              $scope.selectedItem = {
+                  "name": name,
+                  "v1": value.v1,
+                  "v2": value.v2,
+              }
+          }
+        }, null);
+      $scope.b1 = Data.getSingleData($scope.query.name, 1, "Замер", "Резервуар");
       $scope.b2 = Data.getSingleData($scope.query.name, 1, "Сдача нефти", "добыча нефти");
       $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
       $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");

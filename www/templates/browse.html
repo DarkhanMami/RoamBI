@@ -2,40 +2,46 @@
   <ion-content class="black-theme" scroll="true">
 
 
-<div class="bar bar-header black-mid-list">
+<div class="bar bar-header black-mid-list-bar">
   <h1 class="title black-mid-list">Мониторинг скважин</h1>
   <button class="button button-icon ion-android-refresh" style="color:#ffffff;"></button>
 </div>
 
 <br>
 
+<div class="row padding-h">
+	<div class="col">
+		<h4 class="black-theme">{{query.name}}</h4>
+		<h5 class="black-theme">{{query.colName1}} по отношению к {{query.colName2}}</h5>
+	</div>
+	<div class="col text-right">
+		<h4 class="black-theme">{{date}}</h4>
+	</div>
+</div>
 
-<div class="row" ng-repeat="p in places" ng-if="query.name==p.name">
+
+<div class="row">
 		<div class="col col-25">
 
 			<ul class="list black-top-list">
-				<li class="item black-top-list">
-		  			 <h2 class="black-theme">{{p.name}}</h2>
-		  			<br>
-    			</li>
     			<li class="item black-top-list">
 		  			<i class=" ion-stats-bars big-2 color-danger-graph"></i>
-		  			{{p.v1}}
+		  			{{selectedItem.v1}}
 		  			<br>
 		  			<i class="ion-ios-barcode-outline big-2"></i>
-		  			{{p.v2}}
+		  			{{selectedItem.v2}}
     			</li>
     			<li class="item black-top-list">
-					<span ng-if="(p.v1-p.v2) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
-					<span ng-if="(p.v1-p.v2) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
-		  			{{p.v1-p.v2 | number:1}}
+					<span ng-if="(selectedItem.v1-selectedItem.v2) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
+					<span ng-if="(selectedItem.v1-selectedItem.v2) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
+		  			{{selectedItem.v1-selectedItem.v2 | number:1}}
 		  			<br>
 		  			Отклонение
     			</li>
     			<li class="item black-top-list">
-					<span ng-if="((p.v1-p.v2)/ p.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
-					<span ng-if="((p.v1-p.v2)/ p.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
-	  			 	<span ng-if="((p.v1-p.v2)/ p.v1 * 100) > 0"> + </span> {{(p.v1-p.v2) / p.v1 * 100 | number:2}} %
+					<span ng-if="((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
+					<span ng-if="((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
+	  			 	<span ng-if="((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) > 0"> + </span> {{(selectedItem.v1-selectedItem.v2) / selectedItem.v1 * 100 | number:2}} %
 		  			<br>
 		  			Отклонение
     			</li>
@@ -46,7 +52,8 @@
 
 		<div class="col col-75">
 
-			<canvas id="bar"   class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" chart-colors="colors" chart-options="options" chart-dataset-override="datasetOverride" chart-legend="true"> </canvas>
+
+			<canvas id="bar" height="120%" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" chart-colors="colors" chart-options="options" chart-dataset-override="datasetOverride" chart-legend="true"> </canvas>
 
 
 		</div>
@@ -60,17 +67,20 @@
 
 <div class="row">
 	<div class="col">
+
 		<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Замер', 'Резервуар')">
-			<div ng-repeat="p in places" ng-if="query.name==p.name">
 				Замер vs. Резервуар
 				<br>
-				<span ng-if="((p.v1-p.v2) / p.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
-				<span ng-if="((p.v1-p.v2) / p.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
+				<span ng-if="(b1.v1-b1.v2) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
+				<span ng-if="(b1.v1-b1.v2) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
-				{{p.v1-p.v2 | number:1}}
+				{{b1.v1-b1.v2 | number:1}}
 				<br>
-				<span ng-if="((p.v1-p.v2) / p.v1 * 100) > 0"> + </span> {{(p.v1-p.v2) / p.v1 * 100 | number:1}}%
-			</div>
+				<span ng-if="((b1.v1-b1.v2) / b1.v1 * 100) > 0"> + {{(b1.v1-b1.v2) / b1.v1 * 100 | number:1}}% </span>
+				<span ng-if="(((b1.v1-b1.v2) / b1.v1 * 100) <= 0) && (((b1.v1-b1.v2) / b1.v1 * 100) > -100)">
+				{{(b1.v1-b1.v2) / b1.v1 * 100 | number:1}}% </span>
+				<span ng-if="b1.v1 == 0" >  &nbsp </span>
+
 		</div></li></ul>
 	</div>
 	<div class="col">
@@ -78,36 +88,45 @@
 				Сдача  vs. Добыча
 				<br>
 
-				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
-				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
+				<span ng-if="(b2.v1-b2.v2) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
+				<span ng-if="(b2.v1-b2.v2) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
 				{{b2.v1-b2.v2 | number:1}}
 				<br>
-				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) > 0"> + </span> {{(b2.v1-b2.v2) / b2.v1 * 100 | number:1}}%
+				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) > 0"> + {{(b2.v1-b2.v2) / b2.v1 * 100 | number:1}}% </span>
+				<span ng-if="(((b2.v1-b2.v2) / b2.v1 * 100) <= 0) && (((b2.v1-b2.v2) / b2.v1 * 100) > -100)">
+				{{(b2.v1-b2.v2) / b2.v1 * 100 | number:1}}% </span>
+				<span ng-if="b2.v1 == 0" >  &nbsp </span>
 		</div></li></ul>
 	</div>
 		<div class="col">
 		<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Рас. т/р', 'техрежим')">
 				Расч. т.р. vs. Техрежим
 				<br>
-				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
-				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
+				<span ng-if="((b3.v1-b3.v2)) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
+				<span ng-if="((b3.v1-b3.v2)) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
 				{{b3.v1-b3.v2 | number:1}}
 				<br>
-				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) > 0"> + </span> {{(b3.v1-b3.v2) / b3.v1 * 100 | number:1}}%
+				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) > 0"> + {{(b3.v1-b3.v2) / b3.v1 * 100 | number:1}}% </span>
+				<span ng-if="(((b3.v1-b3.v2) / b3.v1 * 100) <= 0) && (((b3.v1-b3.v2) / b3.v1 * 100) > -100)">
+				{{(b3.v1-b3.v2) / b3.v1 * 100 | number:1}}% </span>
+				<span ng-if="b3.v1 == 0" >  &nbsp </span>
 		</div></li></ul>
 	</div>
 	<div class="col">
 				<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'зам. доб. с нак', 'доб. н. по рез. с нак')">
 				Зам.доб. vs. Рез.доб.ж.
 				<br>
-				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
-				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
+				<span ng-if="((b4.v1-b4.v2)) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
+				<span ng-if="((b4.v1-b4.v2)) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
 				{{b4.v1-b4.v2 | number:1}}
 				<br>
-				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) > 0"> + </span> {{(b4.v1-b4.v2) / b4.v1 * 100 | number:1}}%
+				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) > 0"> + {{(b4.v1-b4.v2) / b4.v1 * 100 | number:1}}% </span>
+				<span ng-if="(((b4.v1-b4.v2) / b4.v1 * 100) <= 0) && (((b4.v1-b4.v2) / b4.v1 * 100) > -100)">
+				{{(b4.v1-b4.v2) / b4.v1 * 100 | number:1}}% </span>
+				<span ng-if="b4.v1 == 0" >  &nbsp </span>
 		</div></li></ul>
 	</div>
 </div>
@@ -183,14 +202,14 @@
 </div>
 
 
-<div class="item item-divider table-heading2" ng-repeat="p in places" ng-if="query.name==p.name">
+<div class="item item-divider table-heading2">
     <div class="row">
-	      <div class="col"><label class="item item-input table-input"> {{p.name}} </label> </div>
-	      <div class="col"><label class="item item-input table-input"> {{p.v1}} </label> </div>
-	      <div class="col"><label class="item item-input table-input"> {{p.v2}} </label> </div>
+	      <div class="col"><label class="item item-input table-input"> {{selectedItem.name}} </label> </div>
+	      <div class="col"><label class="item item-input table-input"> {{selectedItem.v1}} </label> </div>
+	      <div class="col"><label class="item item-input table-input"> {{selectedItem.v2}} </label> </div>
 	      <div class="col"><label class="item item-input table-input"> {{date}} </label> </div>
     </div>
-</div> 
+</div>
 
         <ion-scroll style="height:100vh;" direction="y">
 

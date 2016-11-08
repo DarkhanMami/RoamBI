@@ -34,15 +34,27 @@ div{
 	text-align:right;
 }
 .color-danger{
+    color: #ff0b7a;
+}
+
+.color-danger2{
     color: #6d3347;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #ff0b7a;
 }
+
 .color-danger-graph{
     color: #ff0b7a;
 
 }
+
 .color-good{
+    
+    color: #83de32;
+
+}
+
+.color-good2{
     
     color: #4e7d27;
     -webkit-text-stroke-width: 2px;
@@ -61,13 +73,7 @@ line-height: 1.1;
 .interval-15{
 line-height: 1.5;
 }
-.button{
-	
-	background: #19191E;
-    color: #ffffff;
-	width: 95%; 
 
-}
 .button-row{
 
     color: #ffffff;
@@ -104,12 +110,12 @@ line-height: 1.5;
 .black-theme {
     background: #19191E;
     color: #ffffff;
-   
 }
 
 .black-table{
 	background: #19191E;
     color: #ffffff;
+
 }
 .table-heading{
 	font-weight: bold; 
@@ -144,4 +150,35 @@ line-height: 1.5;
 	color:#83de32;
 	background: #50505A;
 	border-color: #50505A; 
+}
+
+.black-top-list {
+    background: #19191E;
+    color: #ffffff;
+    border-color: #19191E; 
+    margin-left: 7%;
+    margin-top: 4%;
+
+}
+
+.black-mid-list {
+    color: #ffffff;
+
+	text-align: center;
+
+	background: #2D2D32;
+    border: 1px;
+    border-radius: 7px;
+}
+
+
+
+.black-mid-list.active,
+.black-mid-list.activated,
+.black-mid-list-complex.active .black-mid-list-content,
+.black-mid-list-complex.activated .black-mid-list-content,
+.black-mid-list .black-mid-list-content.active,
+.black-mid-list .black-mid-list-content.activated {
+    font-weight: bold;
+    background: #50505A;
 }

@@ -47,7 +47,7 @@
 		<div class="col col-75">
 
 			<canvas id="bar"   class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" chart-colors="colors" chart-options="options" chart-dataset-override="datasetOverride" chart-legend="true"> </canvas>
-			
+
 
 		</div>
 </div>
@@ -60,7 +60,7 @@
 
 <div class="row">
 	<div class="col">
-		<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Замер', 'Резервуар')">			
+		<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Замер', 'Резервуар')">
 			<div ng-repeat="p in places" ng-if="query.name==p.name">
 				Замер vs. Резервуар
 				<br>
@@ -76,7 +76,7 @@
 	<div class="col">
 				<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Сдача нефти', 'добыча нефти')">
 				Сдача  vs. Добыча
-				<br> 
+				<br>
 
 				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -89,7 +89,7 @@
 		<div class="col">
 		<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Рас. т/р', 'техрежим')">
 				Расч. т.р. vs. Техрежим
-				<br> 
+				<br>
 				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
@@ -101,7 +101,7 @@
 	<div class="col">
 				<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'зам. доб. с нак', 'доб. н. по рез. с нак')">
 				Зам.доб. vs. Рез.доб.ж.
-				<br> 
+				<br>
 				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
@@ -115,7 +115,7 @@
 
 <!--
 	<div class="button-bar bar-dark">
-		<button class="button" ng-click="updateData(query.name, 'Замер', 'Резервуар')">			
+		<button class="button" ng-click="updateData(query.name, 'Замер', 'Резервуар')">
 			<div ng-repeat="p in places" ng-if="query.name==p.name">
 				Замер vs. Резервуар
 				<br>
@@ -130,7 +130,7 @@
 
 		<button class="button" ng-click="updateData(query.name, 'Сдача нефти', 'добыча нефти')">
 				Сдача  vs. Добыча нефти
-				<br> 
+				<br>
 
 				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -142,7 +142,7 @@
 
 		<button class="button" ng-click="updateData(query.name, 'Рас. т/р', 'техрежим')">
 				Расч. т.р. vs. Техрежим
-				<br> 
+				<br>
 				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
@@ -153,7 +153,7 @@
 
 		<button class="button" ng-click="updateData(query.name, 'зам. доб. с нак', 'доб. н. по рез. с нак')">
 				Зам.доб. vs. Рез.доб.ж.
-				<br> 
+				<br>
 				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
@@ -165,7 +165,7 @@
 	</div>
 
 
-		-->	
+		-->
 
 
 
@@ -190,15 +190,25 @@
 	      <div class="col"><label class="item item-input table-input"> {{p.v2}} </label> </div>
 	      <div class="col"><label class="item item-input table-input"> {{date}} </label> </div>
     </div>
-</div>
+</div> 
 
+        <ion-scroll style="height:100vh;" direction="y">
 
+        <ion-item collection-repeat="item in places" item-height="60" ng-click="raw_selected(item.name)">
+            <div class="row">
+              <div class="col">{{item.name}} {{$index}}</div>
+              <div class="col">{{item.v1}}</div>
+              <div class="col">{{item.v2}}</div>
+              <div class="col"></div>
+            </div>
+        </ion-item>
+    </ion-scroll>
 
-
-	<ion-scroll direction="y" style="height:100vh;">
+	<!-- <ion-scroll direction="y" style="height:100vh;">
 	    <div class="list list-inset">
 
-	      <div class="item table-content" ng-repeat="p in places" ng-click="raw_selected(p.name)" ng-if="query.name!=p.name">
+	      <div class="item table-content" collection-repeat="p in places" ng-click="raw_selected(p.name)" item-height="250" item-width="330">
+              {{row}}
 	        <div class="row">
 	          <div class="col">{{p.name}}</div>
 	          <div class="col">{{p.v1}}</div>
@@ -208,7 +218,7 @@
 	      </div>
 
 	</div>
-	</ion-scroll>
+	</ion-scroll> -->
 </div>
 
 

@@ -46,6 +46,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 .controller("BarCtrl", function($scope, Data, $ionicLoading) {
 
+    
     $scope.colNames = Data.getColNames();
     $scope.places = Data.getPlaces(1, $scope.colNames[3], $scope.colNames[5]);
     $scope.date = "1/01/2016";
@@ -68,7 +69,7 @@ angular.module('starter.controllers', ['chart.js'])
       $scope.date = "" + (points[1]._index + 1) + "/01/2016";
       $scope.b2 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Сдача нефти", "добыча нефти");
       $scope.b3 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Рас. т/р", "техрежим");
-      $scope.b4 = Data.getSingleData($scope.query.name, points[1]._index + 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");  
+      $scope.b4 = Data.getSingleData($scope.query.name, points[1]._index + 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
 
 
       $scope.$apply();
@@ -99,7 +100,7 @@ angular.module('starter.controllers', ['chart.js'])
 
         $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
 
-        $scope.options = {        
+        $scope.options = {
           scales: {
             yAxes: [
               {
@@ -233,7 +234,7 @@ angular.module('starter.controllers', ['chart.js'])
 
       $scope.b2 = Data.getSingleData($scope.query.name, 1, "Сдача нефти", "добыча нефти");
       $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
-      $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");  
+      $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
     }
 
 

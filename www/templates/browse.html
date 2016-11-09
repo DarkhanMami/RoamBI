@@ -211,23 +211,43 @@
     </div>
 </div>
 
-        <ion-scroll style="height:100vh;" direction="y">
 
-        <ion-item collection-repeat="item in places" item-height="60" ng-click="raw_selected(item.name)">
-            <div class="row">
-              <div class="col">{{item.name}} {{$index}}</div>
-              <div class="col">{{item.v1}}</div>
-              <div class="col">{{item.v2}}</div>
-              <div class="col"></div>
-            </div>
-        </ion-item>
+	<ion-scroll direction="y" ng-style="{height:height+'vh'}">
+
+		<ion-list>
+		  <ion-item class="item table-content" collection-repeat="item in places" item-height="37" ng-click="raw_selected(item.name)">
+		    <div class="row">
+	          <div class="col">{{item.name}}</div>
+	          <div class="col">{{item.v1}}</div>
+	          <div class="col">{{item.v2}}</div>
+	          <div class="col"></div>
+	        </div>
+		  </ion-item>
+		</ion-list>
+
+	</ion-scroll>
+
+
+
+
+<!--
+    <ion-scroll style="height:100vh;" direction="y">
+	        <div class="item table-content" collection-repeat="item in places" item-height="60" ng-click="raw_selected(item.name)">
+	            <div class="row">
+	              <div class="col">{{item.name}} {{$index}}</div>
+	              <div class="col">{{item.v1}}</div>
+	              <div class="col">{{item.v2}}</div>
+	              <div class="col"></div>
+	            </div>
+	        </div>
     </ion-scroll>
+	
 
-	<!-- <ion-scroll direction="y" style="height:100vh;">
+
+	<ion-scroll direction="y" style="height:100vh;">
 	    <div class="list list-inset">
 
-	      <div class="item table-content" collection-repeat="p in places" ng-click="raw_selected(p.name)" item-height="250" item-width="330">
-              {{row}}
+	      <div class="item table-content" ng-repeat="p in places" ng-click="raw_selected(p.name)" ng-if="query.name!=p.name">
 	        <div class="row">
 	          <div class="col">{{p.name}}</div>
 	          <div class="col">{{p.v1}}</div>
@@ -237,7 +257,9 @@
 	      </div>
 
 	</div>
-	</ion-scroll> -->
+	</ion-scroll>
+-->
+
 </div>
 
 

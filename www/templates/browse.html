@@ -37,12 +37,12 @@
 		  			<h ng-style="{'font-size':'1.7vw'}">{{selectedItem.v1}}</h>
 		  			<br>
 		  			<i class="ion-ios-barcode-outline big-2"></i>
-		  			{{selectedItem.v2}}
+		  			{{selectedItem.v2 | number:2}}
     			</div>
     			<div class="item black-top-list">
 					<span ng-if="(selectedItem.v1-selectedItem.v2) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 					<span ng-if="(selectedItem.v1-selectedItem.v2) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
-		  			<h ng-style="{'font-size':'1.7vw'}">{{selectedItem.v1-selectedItem.v2 | number:1}}</h>
+		  			<h ng-style="{'font-size':'1.7vw'}">{{selectedItem.v1-selectedItem.v2 | number:2}} </h>
 		  			<br>
 		  			Отклонение
     			</div>
@@ -161,8 +161,8 @@
 <div class="item item-divider table-heading2">
     <div class="row">
 	      <div class="col col-33"><label class="item item-input table-input" ng-style="{'margin-top':'-2.5%'}"> {{selectedItem.name}} </label> </div>
-	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v1}} </label> </div>
-	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v2}} </label> </div>
+	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v1 | number:2}} </label> </div>
+	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v2 | number:2}} </label> </div>
 	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{currentDay}} {{currentMonth}} 2016 </label> </div>
     </div>
 </div>
@@ -173,8 +173,8 @@
 		<div class="item table-content" collection-repeat="item in places" item-height="37" ng-click="raw_selected(item.name)">
 	            <div class="row">
 	              <div class="col">{{item.name}}</div>
-	              <div class="col">{{item.v1}}</div>
-	              <div class="col">{{item.v2}}</div>
+	              <div class="col">{{item.v1 | number:2}}</div>
+	              <div class="col">{{item.v2 | number:2}}</div>
 	              <div class="col"></div>
 	            </div>
 	        </div>

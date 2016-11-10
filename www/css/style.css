@@ -115,12 +115,9 @@ line-height: 1.5;
     color: #ffffff;
 }
 
-.black-table{
-	background: #19191E;
-    color: #ffffff;
 
-}
 .table-heading{
+
 	font-weight: bold; 
 	text-align: center;
 	padding-top: 0px; 
@@ -128,14 +125,17 @@ line-height: 1.5;
 	background: #2D2D32;
 	color: #ffffff;
 	border-color: #2D2D32;
+	font-size: 1.5vw;
+
 }
 .table-heading2{
-	 
+	
 	font-weight: bold; 
 	padding-top: 0px; 
 	padding-bottom: 0px;
 	background: #2D2D32;
 	border-color: #2D2D32;
+
  	
 }
 
@@ -145,6 +145,7 @@ line-height: 1.5;
 	padding-bottom: 0px;
 	background: #50505A;
 	border-color: #2D2D32;
+	font-size: 1.3vw;
 
 
 }
@@ -153,14 +154,18 @@ line-height: 1.5;
 	color:#83de32;
 	background: #50505A;
 	border-color: #50505A; 
+	font-size: 1.3vw;
+	
 }
 
 .black-top-list {
     background: #19191E;
     color: #ffffff;
     border-color: #19191E; 
-    margin-left: 7%;
-
+    margin-left: 10%;
+	padding-top: 0%; 
+	padding-bottom: 0%;
+	font-size: 1.2vw;
 }
 
 .black-mid-list {
@@ -171,6 +176,7 @@ line-height: 1.5;
 	background: #2D2D32;
     border: 1px;
     border-radius: 5px;
+    font-size: 1.3vw;
 }
 
 .black-mid-list-bar {
@@ -194,4 +200,21 @@ line-height: 1.5;
     font-weight: bold;
     background: #50505A;
 }
+
+
+
+
+.table-content.active,
+.table-content.activated,
+.table-content-complex.active .table-content-content,
+.table-content-complex.activated .table-content-content,
+.table-content .table-content-content.active,
+.table-content .table-content-content.activated {
+    font-weight: bold;
+
+	background: #2D2D32;
+	color: #ffffff;
+	border-color: #2D2D32;
+}
+
 

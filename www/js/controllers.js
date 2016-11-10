@@ -63,7 +63,7 @@ angular.module('starter.controllers', ['chart.js'])
     $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
     $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
 
-    $scope.height = screen.height / 30;
+    $scope.height = screen.height / 35;
 
     $scope.onClick = function (points, evt) {
       $scope.places = Data.getPlaces(points[1]._index + 1, $scope.query.colName1, $scope.query.colName2);
@@ -181,7 +181,23 @@ angular.module('starter.controllers', ['chart.js'])
   ];
 
 
-  $scope.colors = ['#72C02C', '#3498DB', '#717984', '#F1C40F'];
+  //$scope.colors = ['#72C02C', '#3498DB', '#717984', '#F1C40F'];
+
+$scope.colors = [
+                    {
+                        backgroundColor: '#00cc00',
+                        borderColor: '#00cc66',
+                        hoverBackgroundColor: '#A2DED0',
+                        hoverBorderColor: '#A2DED0'
+                    },
+                    {
+                        backgroundColor: '#0066ff',
+                        borderColor: '#3366ff',
+                        hoverBackgroundColor: '#65C6BB',
+                        hoverBorderColor: '#65C6BB'
+                    },
+
+                ];
 
 
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];

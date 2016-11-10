@@ -1,10 +1,18 @@
 <ion-view hide-nav-bar="true"view-title="Browse">
   <ion-content class="black-theme" scroll="true">
 
+<div ng-show="show">
+
 
 <div class="bar bar-header black-mid-list-bar">
   <h1 class="title black-mid-list">Мониторинг скважин</h1>
+  <select class="title black-mid-list" ng-model="currentMonth" ng-options="name as name for name in monthes" ng-change="updateMonth(currentMonth)">
+
+    </select>
+  <!-- <select class="title black-mid-list" ng-model="monthes" ng-options="name as name for name in monthes" ng-item="currentMonth" ng-change="updateMonth()"></select> -->
   <button class="button button-icon ion-android-refresh" style="color:#ffffff;"></button>
+
+
 </div>
 
 <br>
@@ -41,11 +49,11 @@
     			<div class="item black-top-list">
 					<span ng-if="(((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) > 0) && (selectedItem.v1 != 0)"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 					<span ng-if="(((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) <= 0) && (selectedItem.v1 != 0)"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
-	  			 	<span ng-if="((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) > 0"> 
+	  			 	<span ng-if="((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) > 0">
 	  			 	<h ng-style="{'font-size':'1.7vw'}"> + {{(selectedItem.v1-selectedItem.v2) / selectedItem.v1 * 100 | number:2}} % </h>
 	  			 	<br>
 		  			Отклонение
-	  			 	</span> 
+	  			 	</span>
 
 
 					<span ng-if="(((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) <= 0) && (((selectedItem.v1-selectedItem.v2)/ selectedItem.v1 * 100) > -100)">
@@ -186,7 +194,7 @@
 	            </div>
 	        </div>
     </ion-scroll>
-	
+
 
 
 	<ion-scroll direction="y" ng-style="{height:height+'vh'}">
@@ -208,6 +216,7 @@
 -->
 
 
-
+</div>
+<ion-spinner icon="spiral" ng-show="!show"></ion-spinner>
   </ion-content>
 </ion-view>

@@ -74,17 +74,62 @@ def fileParse():
         a1_datetime = datetime(*a1_tuple)
         temp.append(a1_datetime.strftime("%d/%m/%Y"))
 
-        temp.append(row_values[3])
-        temp.append(row_values[4])
-        temp.append(row_values[5])
-        temp.append(row_values[6])
-        temp.append(row_values[7])
-        temp.append(row_values[8])
-        temp.append(row_values[9])
-        temp.append(row_values[10])
-        temp.append(row_values[11])
-        temp.append(row_values[12])
-        temp.append(row_values[13])
+
+        try:
+            float(row_values[3])
+            temp.append(float(row_values[3]))
+        except:
+            temp.append(row_values[3])
+        try:
+            float(row_values[4])
+            temp.append(float(row_values[4]))
+        except:
+            temp.append(row_values[4])
+        try:
+            float(row_values[5])
+            temp.append(float(row_values[5]))
+        except:
+            temp.append(row_values[5])
+        try:
+            float(row_values[6])
+            temp.append(float(row_values[6]))
+        except:
+            temp.append(row_values[6])
+        try:
+            float(row_values[7])
+            temp.append(float(row_values[7]))
+        except:
+            temp.append(row_values[7])
+        try:
+            float(row_values[8])
+            temp.append(float(row_values[8]))
+        except:
+            temp.append(row_values[8])
+        try:
+            float(row_values[9])
+            temp.append(float(row_values[9]))
+        except:
+            temp.append(row_values[9])
+        try:
+            float(row_values[10])
+            temp.append(float(row_values[10]))
+        except:
+            temp.append(row_values[10])
+        try:
+            float(row_values[11])
+            temp.append(float(row_values[11]))
+        except:
+            temp.append(row_values[11])
+        try:
+            float(row_values[12])
+            temp.append(float(row_values[12]))
+        except:
+            temp.append(row_values[12])
+        try:
+            float(row_values[13])
+            temp.append(float(row_values[13]))
+        except:
+            temp.append(row_values[13])
         if (a1_datetime.strftime("%d/%m/%Y") == "31/01/2016" and len(monthes) < 2 and len(row_values[0]) == 17):
             print row_values[1] + row_values[0] + a1_datetime.strftime("%d/%m/%Y")
         fullData[row_values[1]].append(temp)

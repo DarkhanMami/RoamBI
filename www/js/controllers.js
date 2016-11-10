@@ -47,6 +47,7 @@ angular.module('starter.controllers', ['chart.js'])
 .controller("BarCtrl", function($scope, Data, $ionicLoading, $http, $timeout) {
     $scope.show = false;
     var promise = Data.init();
+    // $scope.currentMonth = "";
     promise.then(function(greeting) {
         run();
 
@@ -58,7 +59,7 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.colNames = Data.getColNames();
         console.log('getting places');
         $scope.places = Data.getPlaces(1, $scope.colNames[3], $scope.colNames[5]);
-        $scope.date = "1/01/2016";
+
 
         // Test default name & columns
         $scope.query = {
@@ -82,7 +83,7 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.b2 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Сдача нефти", "добыча нефти");
           $scope.b3 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Рас. т/р", "техрежим");
           $scope.b4 = Data.getSingleData($scope.query.name, points[1]._index + 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
-
+          $scope.currentDay = points[1]._index + 1;
 
           $scope.$apply();
         };
@@ -106,7 +107,7 @@ angular.module('starter.controllers', ['chart.js'])
             ];
 
             //$scope.series = [colName1, colName2];
-
+            $scope.currentDay = 1;
             $scope.places = Data.getPlaces(1, colName1, colName2);
             console.log('looping');
             angular.forEach($scope.places, function(value, key) {
@@ -239,7 +240,11 @@ angular.module('starter.controllers', ['chart.js'])
 
       $scope.show = true;
       $scope.monthes = Data.getMonthes();
-      $scope.currentMonth = Data.getMonthes()[0];
+      if (!$scope.currentMonth) {
+          $scope.currentDay = "1";
+         $scope.currentMonth = Data.getMonthes()[0]
+     }
+
     }
 
     $scope.updateMonth = function(newMonth) {
@@ -247,7 +252,6 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.currentMonth = newMonth;
         console.log('updating month');
         console.log('new month');
-        $scope.currentMonth = Data.getMonthes()[2];
         console.log($scope.currentMonth);
         Data.setCurrentMonth($scope.currentMonth);
         $scope.show = false;

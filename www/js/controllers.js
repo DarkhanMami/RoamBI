@@ -84,6 +84,7 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.b3 = Data.getSingleData($scope.query.name, points[1]._index + 1, "Рас. т/р", "техрежим");
           $scope.b4 = Data.getSingleData($scope.query.name, points[1]._index + 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
           $scope.currentDay = points[1]._index + 1;
+          $scope.selectedItem = Data.getSingleData($scope.query.name, points[1]._index + 1, $scope.query.colName1, $scope.query.colName2);
 
           $scope.$apply();
         };

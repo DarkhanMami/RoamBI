@@ -34,7 +34,7 @@
 			<div class="list">
     			<div class="item black-top-list">
 		  			<i class=" ion-stats-bars big-2 color-danger-graph"></i>
-		  			<h ng-style="{'font-size':'1.7vw'}">{{selectedItem.v1}}</h>
+		  			<h ng-style="{'font-size':'1.7vw'}">{{selectedItem.v1 | number:2}}</h>
 		  			<br>
 		  			<i class="ion-ios-barcode-outline big-2"></i>
 		  			{{selectedItem.v2 | number:2}}

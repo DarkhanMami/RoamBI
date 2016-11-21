@@ -73,7 +73,7 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.b3 = Data.getSingleData($scope.query.name, 1, "Рас. т/р", "техрежим");
         $scope.b4 = Data.getSingleData($scope.query.name, 1, "зам. доб. с нак", "Доб. ж. по рез. с нак.");
 
-        $scope.height = screen.height / 35;
+        $scope.height = screen.height / 36;
 
         $scope.onClick = function (points, evt) {
           $scope.places = Data.getPlaces(points[1]._index + 1, $scope.query.colName1, $scope.query.colName2);

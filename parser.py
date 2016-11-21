@@ -210,7 +210,7 @@ for i in xrange(numMessages - 1, 0 , -1):
     file = StringIO.StringIO(text)
     message = rfc822.Message(file)
 
-    if message['Subject'] == 'roambi':
+    if message['Subject'] == 'Pulse':
         emails = [email.message_from_string('\n'.join(raw_message))]
         getAttachment(emails)
         break

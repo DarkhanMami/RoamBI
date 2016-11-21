@@ -41,7 +41,7 @@ angular.module('starter.services', [])
               monthes = response;
               currentMonth = monthes[0];
               $http.get("fullData2.json").success(function (response) {
-                  
+
                   fullData = response;
                   $http.get("colNames2.json").success(function (response) {
                       colNames = response;
@@ -142,13 +142,27 @@ angular.module('starter.services', [])
 
           for (i in places) {
               var p = places[i];
+              console.log(currentMonth + p + day);
+              if (name == "UAZ008U") {
+                  console.log("day = " + day);
+              }
+              try {
+                  var obj = {
+                      'name': p,
+                      'v1': smartData[currentMonth + p + day][col1],
+                      'v2': smartData[currentMonth + p + day][col2],
+                  }
 
-              var obj = {
-                  'name': p,
-                  'v1': smartData[currentMonth + p + day][col1],
-                  'v2': smartData[currentMonth + p + day][col2],
+              } catch (err) {
+                  var obj = {
+                      'name': p,
+                      'v1': 0,
+                      'v2': 0,
+                  }
               }
               result.push(obj)
+
+
           }
 
           return result;
@@ -174,12 +188,13 @@ angular.module('starter.services', [])
                 "message": "Wrong column names"
             }
         }
-        var r1 = [];
-        var r2 = [];
+        var r1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var r2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         for (k in fullData[currentMonth]) {
             if (fullData[currentMonth][k][0] == name) {
-                r1.push(fullData[currentMonth][k][col1]);
-                r2.push(fullData[currentMonth][k][col2]);
+                var day = parseInt(fullData[currentMonth][k][2].substring(0, 2));
+                r1[day] = fullData[currentMonth][k][col1];
+                r2[day] = fullData[currentMonth][k][col2];
             }
         }
         return {

@@ -157,8 +157,10 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.updateData($scope.query.name, $scope.query.colName1, $scope.query.colName2);
 
         $scope.raw_selected = function(name) {
+            console.log('seleted ' + name);
           $scope.query.name = name;
           $scope.result = Data.getNumbers(name, $scope.query.colName1, $scope.query.colName2);
+          console.log($scope.result);
           $scope.data = [
               $scope.result.r1,
               $scope.result.r2

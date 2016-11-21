@@ -186,7 +186,7 @@ angular.module('starter.services', [])
         var r2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         for (k in fullData[currentMonth]) {
             if (fullData[currentMonth][k][0] == name) {
-                var day = parseInt(fullData[currentMonth][k][2].substring(0, 2));
+                var day = parseInt(fullData[currentMonth][k][2].substring(0, 2)) - 1;
                 r1[day] = fullData[currentMonth][k][col1];
                 r2[day] = fullData[currentMonth][k][col2];
             }

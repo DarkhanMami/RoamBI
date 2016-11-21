@@ -35,6 +35,12 @@ div{
 	font-size: 1.5vw;
 	text-align:right;
 }
+
+.big-18{
+	font-size: 1.8vw;
+	text-align:right;
+}
+
 .color-danger{
     color: #ff0b7a;
 }

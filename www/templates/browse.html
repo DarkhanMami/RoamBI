@@ -5,12 +5,12 @@
 
 
 <div class="bar bar-header black-mid-list-bar">
-  <h1 class="title black-mid-list">Мониторинг скважин</h1>
-  <select class="title black-mid-list" ng-model="currentMonth" ng-options="name as name for name in monthes" ng-change="updateMonth(currentMonth)">
+  <h1 class="title black-mid-list" ng-style="{'font-size':'2vw'}">Мониторинг скважин</h1>
+  <select class="title black-mid-list" ng-model="currentMonth" ng-options="name as name for name in monthes" ng-change="updateMonth(currentMonth)" ng-style="{'font-size':'2vw'}">
 
     </select>
   <!-- <select class="title black-mid-list" ng-model="monthes" ng-options="name as name for name in monthes" ng-item="currentMonth" ng-change="updateMonth()"></select> -->
-  <button class="button button-icon ion-android-refresh" style="color:#ffffff;"></button>
+  <i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
 
 
 </div>

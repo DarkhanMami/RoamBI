@@ -142,18 +142,14 @@ angular.module('starter.services', [])
 
           for (i in places) {
               var p = places[i];
-              console.log(currentMonth + p + day);
-              if (name == "UAZ008U") {
-                  console.log("day = " + day);
-              }
-              try {
+              var key = currentMonth + p + day;
+              if (key in smartData) {
                   var obj = {
                       'name': p,
                       'v1': smartData[currentMonth + p + day][col1],
                       'v2': smartData[currentMonth + p + day][col2],
                   }
-
-              } catch (err) {
+              } else {
                   var obj = {
                       'name': p,
                       'v1': 0,
@@ -161,8 +157,6 @@ angular.module('starter.services', [])
                   }
               }
               result.push(obj)
-
-
           }
 
           return result;

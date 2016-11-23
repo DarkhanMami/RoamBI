@@ -50,6 +50,42 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'BarCtrl'
         }
       }
+  })
+  .state('app.dobycha', {
+      url: '/dobycha',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/dobycha.html',
+          controller: 'BarCtrl'
+        }
+      }
+  })
+  .state('app.nalogi', {
+      url: '/nalogi',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/nalogi.html',
+          controller: 'BarCtrl'
+        }
+      }
+  })
+  .state('app.toro', {
+      url: '/toro',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/toro.html',
+          controller: 'BarCtrl'
+        }
+      }
+  })
+  .state('app.mto', {
+      url: '/mto',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/mto.html',
+          controller: 'BarCtrl'
+        }
+      }
   });
 
   // if none of the above states are matched, use this as the fallback

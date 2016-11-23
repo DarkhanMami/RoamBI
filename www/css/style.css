@@ -155,6 +155,8 @@ line-height: 1.5;
 
 
 }
+
+
 .table-input{
 	font-weight: bold; 
 	color:#83de32;
@@ -224,3 +226,23 @@ line-height: 1.5;
 }
 
 
+.menu-content{
+	color: #CCC;
+	background: #50505A;
+	border-color: #2D2D32;
+}
+
+
+
+.menu-content.active,
+.menu-content.activated,
+.menu-content-complex.active .menu-content-content,
+.menu-content-complex.activated .menu-content-content,
+.menu-content .menu-content-content.active,
+.menu-content .menu-content-content.activated {
+    font-weight: bold;
+
+	background: #2D2D32;
+	color: #ffffff;
+	border-color: #2D2D32;
+}

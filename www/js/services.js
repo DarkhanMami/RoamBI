@@ -1,5 +1,38 @@
 angular.module('starter.services', [])
+.factory('NalogyData', function ($http, $q) {
+    var data = {};
+    var years = [];
+    var companies = [];
+    var asyncInit = function() {
+      // perform some asynchronous operation, resolve or reject the promise when appropriate.
+      return $q(function(resolve, reject) {
+          var fileNames = ["nalogy_data.json", "nalogy_years.json", "nalogy_companies.json"];
+          $http.get(fileNames[0]).success(function (response) {
+              data = response;
+              $http.get(fileNames[1]).success(function (response) {
+                  years = response;
+                  $http.get(fileNames[2]).success(function (response) {
+                      companies = response;
+                      resolve("OK");
+                  });
+              });
+          });
+     });
+    }
 
+    return {
+        init: asyncInit,
+        getData: function() {
+            return data;
+        },
+        getCompanies: function() {
+            return companies;
+        },
+        getYears: function() {
+            return years;
+        }
+    }
+})
 .factory('Data', function ($http, $q) {
     var monthes = [];
     var colNames = [];

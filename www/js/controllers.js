@@ -43,6 +43,23 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 
+.controller('NalogyCtrl', function($scope, NalogyData) {
+
+
+
+    var promise = NalogyData.init();
+    // $scope.currentMonth = "";
+    promise.then(function(greeting) {
+        $scope.companies = NalogyData.getCompanies();
+        $scope.data = NalogyData.getData();
+        $scope.years = NalogyData.getYears();
+
+    }, function(reason) {
+        console.log(reason);
+    });
+
+})
+
 
 .controller("BarCtrl", function($scope, Data, $ionicLoading, $http, $timeout) {
     $scope.show = false;

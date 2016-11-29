@@ -65,7 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'menuContent': {
           templateUrl: 'templates/nalogi.html',
-          controller: 'BarCtrl'
+          controller: 'NalogyCtrl'
         }
       }
   })

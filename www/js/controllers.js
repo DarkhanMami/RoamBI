@@ -44,27 +44,195 @@ angular.module('starter.controllers', ['chart.js'])
 })
 
 .controller('NalogyCtrl', function($scope, NalogyData) {
-
-
-    $scope.filter = function(year, company, column) {
-
-        $scope.result = NalogyData.filter(year, company, column);
-        console.log(year);
-        console.log(company);
-        console.log(column);
-    }
-
-
+    $scope.show = false;
     var promise = NalogyData.init();
     // $scope.currentMonth = "";
     promise.then(function(greeting) {
-        $scope.companies = NalogyData.getCompanies();
-        $scope.data = NalogyData.getData();
-        $scope.years = NalogyData.getYears();
+        run();
 
     }, function(reason) {
         console.log(reason);
     });
+
+    var run = function() {
+
+      $scope.companies = NalogyData.getCompanies();
+
+      $scope.query = {
+          name: $scope.companies[0],
+      }
+
+      $scope.pretitle = 'Налоги, тыс.тг';
+
+      $scope.height = screen.height / 36;
+
+    
+      $scope.result = {
+          r1: NalogyData.filter('2015', $scope.query.name, 0),
+          r2: NalogyData.filter('2016', $scope.query.name, 0),
+          r3: NalogyData.filter('2015', $scope.query.name, 1),
+          r4: NalogyData.filter('2016', $scope.query.name, 1),
+          r5: NalogyData.filter('2015', $scope.query.name, 2),
+          r6: NalogyData.filter('2016', $scope.query.name, 2),        
+          r7: NalogyData.filter('2015', $scope.query.name, 3),
+          r8: NalogyData.filter('2016', $scope.query.name, 3),
+          r9: NalogyData.filter('2015', $scope.query.name, 4),
+          r10: NalogyData.filter('2016', $scope.query.name, 4)
+      }
+
+      $scope.places = [{
+        name: $scope.companies[0],
+        v1: $scope.result.r1[0],
+        v2: $scope.result.r2[0]
+      }];
+
+
+      $scope.selectedItem = {
+          name: $scope.query.name,
+          v1: $scope.result.r1[0],
+          v2: $scope.result.r2[0]
+      };
+
+
+      $scope.b1 = {
+          v1: $scope.result.r1[0],
+          v2: $scope.result.r2[0]
+      };
+      $scope.b2 = {
+          v1: $scope.result.r3[0],
+          v2: $scope.result.r4[0]
+      };
+      $scope.b3 = {
+          v1: $scope.result.r5[0],
+          v2: $scope.result.r6[0]
+      };
+      $scope.b4 = {
+          v1: $scope.result.r7[0],
+          v2: $scope.result.r8[0]
+      };
+
+
+        $scope.labels = ['янв', 'фев', 'март', 'апр', 'май', 'июнь', 'июль','авг', 'сен', 'окт', 'ноя', 'дек'];
+
+        $scope.series = [$scope.query.colName, $scope.query.colName];
+
+        $scope.data = [
+          $scope.result.r1,
+          $scope.result.r2,
+          $scope.result.r9,
+          $scope.result.r10
+        ];
+
+
+      $scope.colors = [
+                          {
+                              backgroundColor: '#00cc00',
+                              borderColor: '#00cc66',
+                              hoverBackgroundColor: '#A2DED0',
+                              hoverBorderColor: '#A2DED0'
+                          },
+                          {
+                              backgroundColor: '#0066ff',
+                              borderColor: '#3366ff',
+                              hoverBackgroundColor: '#65C6BB',
+                              hoverBorderColor: '#65C6BB'
+                          },
+                          {
+
+                              borderColor: '#006600'
+                          },
+                          {
+                              borderColor: '#0000cc'
+                          },
+
+                      ];
+
+
+        $scope.datasetOverride = [{ yAxisID: 'y-axis-1',type: 'bar' }, { yAxisID: 'y-axis-1',type: 'bar' }, { yAxisID: 'y-axis-2', type: 'line' }, { yAxisID: 'y-axis-2',type: 'line'}];
+        $scope.options = {
+          scales: {
+            yAxes: [
+              {
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left'
+              },
+              {
+                id: 'y-axis-2',
+                type: 'linear',
+                display: true,
+                position: 'right'
+              }
+            ]
+          },
+
+
+          "legend": {
+          "display": false,
+          "position": "top"
+        }
+
+      };
+
+      $scope.updateData = function() {
+        $scope.data = [
+          $scope.result.r1,
+          $scope.result.r2,
+          $scope.result.r9,
+          $scope.result.r10
+        ];
+
+        $scope.selectedItem.v1 = $scope.result.r1[0];
+        $scope.selectedItem.v2 = $scope.result.r2[0];
+
+        $scope.options.scales.yAxes[1].display = true;
+        $scope.pretitle = 'Налоги, тыс.тг';
+      }
+
+      $scope.updateData2 = function() {
+        $scope.data = [
+          $scope.result.r3,
+          $scope.result.r4
+        ];
+
+        $scope.selectedItem.v1 = $scope.result.r3[0];
+        $scope.selectedItem.v2 = $scope.result.r4[0];
+
+        $scope.options.scales.yAxes[1].display = false;
+        $scope.pretitle = 'Налоги, (нарас.) тыс.тг';
+      }
+      $scope.updateData3 = function() {
+        $scope.data = [
+          $scope.result.r5,
+          $scope.result.r6
+        ];
+
+        $scope.selectedItem.v1 = $scope.result.r5[0];
+        $scope.selectedItem.v2 = $scope.result.r6[0];
+
+        $scope.options.scales.yAxes[1].display = false;
+        $scope.pretitle = 'Доход, тыс.тг';
+      }
+
+      $scope.updateData4 = function() {
+        $scope.data = [
+          $scope.result.r7,
+          $scope.result.r8
+        ];
+
+        $scope.selectedItem.v1 = $scope.result.r7[0];
+        $scope.selectedItem.v2 = $scope.result.r8[0];
+
+        $scope.options.scales.yAxes[1].display = false;
+        $scope.pretitle = 'Доход, (нарас.) тыс.тг';
+      }
+
+
+
+      $scope.show = true;
+    }
+
 
 })
 

@@ -3,6 +3,7 @@ angular.module('starter.services', [])
     var data = {};
     var years = [];
     var companies = [];
+    var monthes = [];
     var asyncInit = function() {
       // perform some asynchronous operation, resolve or reject the promise when appropriate.
       return $q(function(resolve, reject) {
@@ -13,7 +14,10 @@ angular.module('starter.services', [])
                   years = response;
                   $http.get(fileNames[2]).success(function (response) {
                       companies = response;
-                      resolve("OK");
+                      $http.get("nalogy_monthes.json").success(function (response) {
+                          monthes = response;
+                          resolve("OK");
+                      });
                   });
               });
           });
@@ -22,6 +26,15 @@ angular.module('starter.services', [])
 
     return {
         init: asyncInit,
+        filter: function(year, company, column) {
+            result = [];
+            column = parseInt(column);
+            year = parseInt(year);
+            for (i in monthes) {
+                result.push(data[company][year][monthes[i]][column]);
+            }
+            return result;
+        },
         getData: function() {
             return data;
         },

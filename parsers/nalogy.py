@@ -62,6 +62,8 @@ def products_from_xls(filename):
         f.write(json.dumps(years))
     with open('../www/nalogy_companies.json', 'w+') as f:
         f.write(json.dumps(companies))
+    with open('../www/nalogy_monthes.json', 'w+') as f:
+        f.write(json.dumps(monthes))        
     return data
     # except:
     #     pass

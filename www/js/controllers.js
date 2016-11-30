@@ -46,6 +46,14 @@ angular.module('starter.controllers', ['chart.js'])
 .controller('NalogyCtrl', function($scope, NalogyData) {
 
 
+    $scope.filter = function(year, company, column) {
+
+        $scope.result = NalogyData.filter(year, company, column);
+        console.log(year);
+        console.log(company);
+        console.log(column);
+    }
+
 
     var promise = NalogyData.init();
     // $scope.currentMonth = "";

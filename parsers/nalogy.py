@@ -41,7 +41,9 @@ def products_from_xls(filename):
                 try:
                     value = float(value)
                 except:
-                    value = 0.0
+                    value = None
+                if col == 8 and value is not None:
+                    value *= 100.0
                 data[current_company][current_year][current_month][col - 4] = value
     # for c in companies:
     #     print c
@@ -63,7 +65,7 @@ def products_from_xls(filename):
     with open('../www/nalogy_companies.json', 'w+') as f:
         f.write(json.dumps(companies))
     with open('../www/nalogy_monthes.json', 'w+') as f:
-        f.write(json.dumps(monthes))        
+        f.write(json.dumps(monthes))
     return data
     # except:
     #     pass

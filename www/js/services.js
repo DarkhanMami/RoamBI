@@ -43,6 +43,9 @@ angular.module('starter.services', [])
         },
         getYears: function() {
             return years;
+        },
+        getMonthes: function() {
+            return monthes;
         }
     }
 })

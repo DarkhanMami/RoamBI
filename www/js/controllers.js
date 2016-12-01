@@ -54,9 +54,114 @@ angular.module('starter.controllers', ['chart.js'])
         console.log(reason);
     });
 
+    $scope.updateYear2 = function(newYear2) {
+        console.log(newYear2);
+        $scope.year2 = newYear2;
+        $scope.updateGraph();
+    }
+
+    $scope.updateYear1 = function(newYear1) {
+        console.log(newYear1);
+        $scope.year1 = newYear1;
+        $scope.updateGraph();
+
+    }
+
+    $scope.currentMonthIndex = 0;
+
+    $scope.onClick = function (points, evt) {
+    //   console.log(points[1]._index);
+      $scope.currentMonthIndex = points[1]._index;
+      $scope.currentMonth = $scope.monthes[points[1]._index];
+      $scope.updateGraph();
+      $scope.$apply();
+    };
+
+    $scope.updateGraph = function() {
+        console.log('updating graph');
+        console.log($scope.year1);
+        console.log($scope.year2);
+        $scope.result = {
+            r1: NalogyData.filter($scope.year1, $scope.query.name, 0),
+            r2: NalogyData.filter($scope.year2, $scope.query.name, 0),
+            r3: NalogyData.filter($scope.year1, $scope.query.name, 1),
+            r4: NalogyData.filter($scope.year2, $scope.query.name, 1),
+            r5: NalogyData.filter($scope.year1, $scope.query.name, 2),
+            r6: NalogyData.filter($scope.year2, $scope.query.name, 2),
+            r7: NalogyData.filter($scope.year1, $scope.query.name, 3),
+            r8: NalogyData.filter($scope.year2, $scope.query.name, 3),
+            r9: NalogyData.filter($scope.year1, $scope.query.name, 4),
+            r10: NalogyData.filter($scope.year2, $scope.query.name, 4)
+        }
+
+
+          $scope.result = {
+              r1: NalogyData.filter($scope.year1, $scope.query.name, 0),
+              r2: NalogyData.filter($scope.year2, $scope.query.name, 0),
+              r3: NalogyData.filter($scope.year1, $scope.query.name, 1),
+              r4: NalogyData.filter($scope.year2, $scope.query.name, 1),
+              r5: NalogyData.filter($scope.year1, $scope.query.name, 2),
+              r6: NalogyData.filter($scope.year2, $scope.query.name, 2),
+              r7: NalogyData.filter($scope.year1, $scope.query.name, 3),
+              r8: NalogyData.filter($scope.year2, $scope.query.name, 3),
+              r9: NalogyData.filter($scope.year1, $scope.query.name, 4),
+              r10: NalogyData.filter($scope.year2, $scope.query.name, 4)
+          }
+
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r1[$scope.currentMonthIndex],
+            v2: $scope.result.r2[$scope.currentMonthIndex]
+          }];
+
+
+          $scope.selectedItem = {
+              name: $scope.query.name,
+              v1: $scope.result.r1[$scope.currentMonthIndex],
+              v2: $scope.result.r2[$scope.currentMonthIndex]
+          };
+
+
+          $scope.b1 = {
+              v1: $scope.result.r1[$scope.currentMonthIndex],
+              v2: $scope.result.r2[$scope.currentMonthIndex]
+          };
+          $scope.b2 = {
+              v1: $scope.result.r3[$scope.currentMonthIndex],
+              v2: $scope.result.r4[$scope.currentMonthIndex]
+          };
+          $scope.b3 = {
+              v1: $scope.result.r5[$scope.currentMonthIndex],
+              v2: $scope.result.r6[$scope.currentMonthIndex]
+          };
+          $scope.b4 = {
+              v1: $scope.result.r7[$scope.currentMonthIndex],
+              v2: $scope.result.r8[$scope.currentMonthIndex]
+          };
+
+
+            $scope.labels = ['янв', 'фев', 'март', 'апр', 'май', 'июнь', 'июль','авг', 'сен', 'окт', 'ноя', 'дек'];
+
+            $scope.series = [$scope.query.colName, $scope.query.colName];
+
+            $scope.data = [
+              $scope.result.r1,
+              $scope.result.r2,
+              $scope.result.r9,
+              $scope.result.r10
+            ];
+
+
+        console.log($scope.result);
+    }
+
     var run = function() {
 
       $scope.companies = NalogyData.getCompanies();
+      $scope.years = NalogyData.getYears();
+      $scope.monthes = NalogyData.getMonthes();
+      $scope.year1 = 2015;
+      $scope.year2 = 2016;
 
       $scope.query = {
           name: $scope.companies[0],
@@ -64,65 +169,11 @@ angular.module('starter.controllers', ['chart.js'])
 
       $scope.pretitle = 'Налоги, тыс.тг';
 
+      $scope.currentMonth = NalogyData.getMonthes()[0];
+
       $scope.height = screen.height / 36;
 
-    
-      $scope.result = {
-          r1: NalogyData.filter('2015', $scope.query.name, 0),
-          r2: NalogyData.filter('2016', $scope.query.name, 0),
-          r3: NalogyData.filter('2015', $scope.query.name, 1),
-          r4: NalogyData.filter('2016', $scope.query.name, 1),
-          r5: NalogyData.filter('2015', $scope.query.name, 2),
-          r6: NalogyData.filter('2016', $scope.query.name, 2),        
-          r7: NalogyData.filter('2015', $scope.query.name, 3),
-          r8: NalogyData.filter('2016', $scope.query.name, 3),
-          r9: NalogyData.filter('2015', $scope.query.name, 4),
-          r10: NalogyData.filter('2016', $scope.query.name, 4)
-      }
-
-      $scope.places = [{
-        name: $scope.companies[0],
-        v1: $scope.result.r1[0],
-        v2: $scope.result.r2[0]
-      }];
-
-
-      $scope.selectedItem = {
-          name: $scope.query.name,
-          v1: $scope.result.r1[0],
-          v2: $scope.result.r2[0]
-      };
-
-
-      $scope.b1 = {
-          v1: $scope.result.r1[0],
-          v2: $scope.result.r2[0]
-      };
-      $scope.b2 = {
-          v1: $scope.result.r3[0],
-          v2: $scope.result.r4[0]
-      };
-      $scope.b3 = {
-          v1: $scope.result.r5[0],
-          v2: $scope.result.r6[0]
-      };
-      $scope.b4 = {
-          v1: $scope.result.r7[0],
-          v2: $scope.result.r8[0]
-      };
-
-
-        $scope.labels = ['янв', 'фев', 'март', 'апр', 'май', 'июнь', 'июль','авг', 'сен', 'окт', 'ноя', 'дек'];
-
-        $scope.series = [$scope.query.colName, $scope.query.colName];
-
-        $scope.data = [
-          $scope.result.r1,
-          $scope.result.r2,
-          $scope.result.r9,
-          $scope.result.r10
-        ];
-
+      $scope.updateGraph();
 
       $scope.colors = [
                           {
@@ -162,7 +213,14 @@ angular.module('starter.controllers', ['chart.js'])
                 id: 'y-axis-2',
                 type: 'linear',
                 display: true,
-                position: 'right'
+                position: 'right',
+                // elements: {
+                //     line: {
+                //         fill: false,
+                //         skipNull: true,
+                //         drawNull: false,
+                //     }
+                // }
               }
             ]
           },
@@ -183,8 +241,14 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r10
         ];
 
-        $scope.selectedItem.v1 = $scope.result.r1[0];
-        $scope.selectedItem.v2 = $scope.result.r2[0];
+        $scope.selectedItem.v1 = $scope.result.r1[$scope.currentMonthIndex];
+        $scope.selectedItem.v2 = $scope.result.r2[$scope.currentMonthIndex];
+
+        $scope.places = [{
+          name: $scope.companies[0],
+          v1: $scope.result.r1[$scope.currentMonthIndex],
+          v2: $scope.result.r2[$scope.currentMonthIndex]
+        }];
 
         $scope.options.scales.yAxes[1].display = true;
         $scope.pretitle = 'Налоги, тыс.тг';
@@ -196,8 +260,14 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r4
         ];
 
-        $scope.selectedItem.v1 = $scope.result.r3[0];
-        $scope.selectedItem.v2 = $scope.result.r4[0];
+        $scope.places = [{
+          name: $scope.companies[0],
+          v1: $scope.result.r3[$scope.currentMonthIndex],
+          v2: $scope.result.r4[$scope.currentMonthIndex]
+        }];
+
+        $scope.selectedItem.v1 = $scope.result.r3[$scope.currentMonthIndex];
+        $scope.selectedItem.v2 = $scope.result.r4[$scope.currentMonthIndex];
 
         $scope.options.scales.yAxes[1].display = false;
         $scope.pretitle = 'Налоги, (нарас.) тыс.тг';
@@ -208,8 +278,14 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r6
         ];
 
-        $scope.selectedItem.v1 = $scope.result.r5[0];
-        $scope.selectedItem.v2 = $scope.result.r6[0];
+        $scope.places = [{
+          name: $scope.companies[0],
+          v1: $scope.result.r5[$scope.currentMonthIndex],
+          v2: $scope.result.r6[$scope.currentMonthIndex]
+        }];
+
+        $scope.selectedItem.v1 = $scope.result.r5[$scope.currentMonthIndex];
+        $scope.selectedItem.v2 = $scope.result.r6[$scope.currentMonthIndex];
 
         $scope.options.scales.yAxes[1].display = false;
         $scope.pretitle = 'Доход, тыс.тг';
@@ -221,8 +297,14 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r8
         ];
 
-        $scope.selectedItem.v1 = $scope.result.r7[0];
-        $scope.selectedItem.v2 = $scope.result.r8[0];
+        $scope.places = [{
+          name: $scope.companies[0],
+          v1: $scope.result.r7[$scope.currentMonthIndex],
+          v2: $scope.result.r8[$scope.currentMonthIndex]
+        }];
+
+        $scope.selectedItem.v1 = $scope.result.r7[$scope.currentMonthIndex];
+        $scope.selectedItem.v2 = $scope.result.r8[$scope.currentMonthIndex];
 
         $scope.options.scales.yAxes[1].display = false;
         $scope.pretitle = 'Доход, (нарас.) тыс.тг';

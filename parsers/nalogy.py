@@ -19,8 +19,8 @@ def products_from_xls(filename):
     for rownum in range(sheet.nrows):
         if rownum > 4:
             # data starts from 5th row in XLSX
-            current_company = u"Компания 1"
-            #  current_company = sheet.row_values(rownum)[1]
+            # current_company = u"Компания 1"
+            current_company = sheet.row_values(rownum)[1]
             current_month = sheet.row_values(rownum)[3]
             if current_company not in companies:
                 companies.append(current_company) # TEST ONLY

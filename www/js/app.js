@@ -60,6 +60,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
   })
+  .state('app.yearnalogi', {
+      url: '/yearnalogi',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/yearnalogi.html',
+          controller: 'YearNalogyCtrl'
+        }
+      }
+  })
   .state('app.nalogi', {
       url: '/nalogi',
       views: {

@@ -318,6 +318,224 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 
+.controller('YearNalogyCtrl', function($scope, NalogyData) {
+    $scope.show = false;
+    var promise = NalogyData.init();
+    // $scope.currentMonth = "";
+    promise.then(function(greeting) {
+        run();
+
+    }, function(reason) {
+        console.log(reason);
+    });
+
+
+    $scope.currentMonthIndex = 0;
+
+    $scope.onClick = function (points, evt) {
+    //   console.log(points[1]._index);
+      $scope.currentMonthIndex = points[1]._index;
+      $scope.currentMonth = $scope.monthes[points[1]._index];
+      $scope.updateGraph();
+      $scope.$apply();
+    };
+
+    $scope.updateGraph = function() {
+        console.log('updating graph');
+        console.log($scope.year1);
+        console.log($scope.year2);
+        $scope.result = {
+            r1: [340749, 378332, 273947, 220564],
+            r2: [183193, 158765, 67224, 43847],
+            r3: [54, 42, 25, 20],
+            r4: [210230, 176245, 78600, 52340],
+            r5: [183193, 158765, 67224, 43847],
+            r6: [87, 90, 86, 84],
+            r7: [183193, 158765, 67224, 43847],
+            r8: [23000, 24120, 22560, 15900],
+            r9: [13, 15, 34, 36]
+        }
+
+
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r1[$scope.currentMonthIndex],
+            v2: $scope.result.r2[$scope.currentMonthIndex]
+          }];
+
+
+          $scope.selectedItem = {
+              name: $scope.query.name,
+              v1: $scope.result.r1[$scope.currentMonthIndex],
+              v2: $scope.result.r2[$scope.currentMonthIndex]
+          };
+
+
+          $scope.b1 = {
+              v1: $scope.result.r1[$scope.currentMonthIndex],
+              v2: $scope.result.r2[$scope.currentMonthIndex]
+          };
+          $scope.b2 = {
+              v1: $scope.result.r4[$scope.currentMonthIndex],
+              v2: $scope.result.r5[$scope.currentMonthIndex]
+          };
+          $scope.b3 = {
+              v1: $scope.result.r7[$scope.currentMonthIndex],
+              v2: $scope.result.r8[$scope.currentMonthIndex]
+          };
+
+
+            $scope.labels = ['2013', '2014', '2015', '2016 (янв-окт)'];
+
+            $scope.series = [$scope.query.colName, $scope.query.colName];
+
+            $scope.data = [
+              $scope.result.r3,
+              $scope.result.r1,
+              $scope.result.r2
+              
+            ];
+
+
+        console.log($scope.result);
+    }
+
+    var run = function() {
+
+      $scope.companies = NalogyData.getCompanies();
+      $scope.years = NalogyData.getYears();
+      $scope.monthes = ['2013', '2014', '2015', '2016 (янв-окт)'];
+
+
+      $scope.query = {
+          name: $scope.companies[0],
+      }
+
+      $scope.pretitle = 'Налоговая нагрузка';
+
+      $scope.currentMonth = 2013;
+
+      $scope.height = screen.height / 36;
+
+      $scope.updateGraph();
+
+      $scope.colors = [
+                          {
+
+                              borderColor: '#ff0b7a'
+                          },
+                          {
+                              backgroundColor: '#00cc00',
+                              borderColor: '#00cc66',
+                              hoverBackgroundColor: '#A2DED0',
+                              hoverBorderColor: '#A2DED0'
+                          },
+                          {
+                              backgroundColor: '#0066ff',
+                              borderColor: '#3366ff',
+                              hoverBackgroundColor: '#65C6BB',
+                              hoverBorderColor: '#65C6BB'
+                          }
+
+
+                      ];
+
+
+        $scope.datasetOverride = [{ yAxisID: 'y-axis-1', type: 'line' }, { yAxisID: 'y-axis-2',type: 'bar' }, { yAxisID: 'y-axis-2',type: 'bar' }];
+        $scope.options = {
+          scales: {
+            yAxes: [
+              {
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'right',
+              },
+              {
+                id: 'y-axis-2',
+                type: 'linear',
+                display: true,
+                position: 'left'
+              }
+
+            ]
+          },
+
+
+          "legend": {
+          "display": false,
+          "position": "top"
+        }
+
+      };
+
+      $scope.updateData = function() {
+        $scope.data = [
+          $scope.result.r3,
+          $scope.result.r1,
+          $scope.result.r2,
+        ];
+
+        $scope.selectedItem.v1 = $scope.result.r1[$scope.currentMonthIndex];
+        $scope.selectedItem.v2 = $scope.result.r2[$scope.currentMonthIndex];
+
+        $scope.places = [{
+          name: $scope.companies[0],
+          v1: $scope.result.r1[$scope.currentMonthIndex],
+          v2: $scope.result.r2[$scope.currentMonthIndex]
+        }];
+
+        $scope.options.scales.yAxes[1].display = true;
+        $scope.pretitle = 'Налоговая нагрузка';
+      }
+
+      $scope.updateData2 = function() {
+        $scope.data = [
+          $scope.result.r6,
+          $scope.result.r4,
+          $scope.result.r5,
+          
+        ];
+
+        $scope.places = [{
+          name: $scope.companies[0],
+          v1: $scope.result.r4[$scope.currentMonthIndex],
+          v2: $scope.result.r5[$scope.currentMonthIndex]
+        }];
+
+        $scope.selectedItem.v1 = $scope.result.r4[$scope.currentMonthIndex];
+        $scope.selectedItem.v2 = $scope.result.r5[$scope.currentMonthIndex];
+
+        $scope.options.scales.yAxes[1].display = false;
+        $scope.pretitle = 'Начисленные и выплаченные';
+      }
+      $scope.updateData3 = function() {
+        $scope.data = [
+          $scope.result.r9,
+          $scope.result.r7,
+          $scope.result.r8,
+          
+        ];
+
+        $scope.places = [{
+          name: $scope.companies[0],
+          v1: $scope.result.r7[$scope.currentMonthIndex],
+          v2: $scope.result.r8[$scope.currentMonthIndex]
+        }];
+
+        $scope.selectedItem.v1 = $scope.result.r7[$scope.currentMonthIndex];
+        $scope.selectedItem.v2 = $scope.result.r8[$scope.currentMonthIndex];
+
+        $scope.options.scales.yAxes[1].display = false;
+        $scope.pretitle = 'Расходы по фиксированным';
+      }
+
+
+      $scope.show = true;
+    }
+
+
+})
 
 .controller("BarCtrl", function($scope, Data, $ionicLoading, $http, $timeout) {
     $scope.show = false;

@@ -7,13 +7,7 @@
 <div class="bar bar-header black-mid-list-bar">
   <h1 class="title black-mid-list" ng-style="{'font-size':'2vw'}">Анализ налогов</h1>
   
-  <select class="title black-mid-list" ng-model="year1" ng-options="name as name for name in years" ng-change="updateYear1(year1)" ng-style="{'font-size':'2vw' }">
 
-    </select>
-
-    <select class="title black-mid-list" ng-model="year2" ng-options="name as name for name in years" ng-change="updateYear2(year2)" ng-style="{'font-size':'2vw' }" style="margin-left:100px">
-
-      </select>
   <!-- <select class="title black-mid-list" ng-model="monthes" ng-options="name as name for name in monthes" ng-item="currentMonth" ng-change="updateMonth()"></select> -->
 
 
@@ -91,7 +85,7 @@
 	<div class="col">
 
 		<ul><li><div class="black-mid-list" ng-click="updateData()">
-				Налоги, тыс.тг
+				Налоговая нагрузка
 				<br>
 				<span ng-if="(b1.v1-b1.v2) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="(b1.v1-b1.v2) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -107,7 +101,7 @@
 	</div>
 	<div class="col">
 				<ul><li><div class="black-mid-list" ng-click="updateData2()">
-				Налоги, (нарас.) тыс.тг
+				Начисленные и выплаченные
 				<br>
 
 				<span ng-if="(b2.v1-b2.v2) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
@@ -123,7 +117,7 @@
 	</div>
 		<div class="col">
 		<ul><li><div class="black-mid-list" ng-click="updateData3()">
-				Доход, тыс.тг
+				Расходы по фиксированным
 				<br>
 				<span ng-if="((b3.v1-b3.v2)) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b3.v1-b3.v2)) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -136,21 +130,6 @@
 				<span ng-if="b3.v1 == 0" >  &nbsp </span>
 		</div></li></ul>
 	</div>
-	<div class="col">
-				<ul><li><div class="black-mid-list" ng-click="updateData4()">
-				Доход, (нарас.) тыс.тг
-				<br>
-				<span ng-if="((b4.v1-b4.v2)) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
-				<span ng-if="((b4.v1-b4.v2)) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
-
-				<h ng-style="{'font-size':'1.8vw'}">{{b4.v1-b4.v2 | number:1}}</h>
-				<br>
-				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) > 0"> + {{(b4.v1-b4.v2) / b4.v1 * 100 | number:1}}% </span>
-				<span ng-if="(((b4.v1-b4.v2) / b4.v1 * 100) <= 0) && (((b4.v1-b4.v2) / b4.v1 * 100) > -100)">
-				{{(b4.v1-b4.v2) / b4.v1 * 100 | number:1}}% </span>
-				<span ng-if="b4.v1 == 0" >  &nbsp </span>
-		</div></li></ul>
-	</div>
 </div>
 
 
@@ -161,7 +140,7 @@
 	      <div class="col col-33">Объект</div>
 	      <div class="col">{{query.colName1}}</div>
 	      <div class="col">{{query.colName2}}</div>
-	      <div class="col">Месяц</div>
+	      <div class="col">Год</div>
     </div>
 </div>
 

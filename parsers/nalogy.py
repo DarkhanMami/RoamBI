@@ -39,11 +39,14 @@ def products_from_xls(filename):
             for col in range(4, 9):
                 value = sheet.row_values(rownum)[col]
                 try:
-                    value = float(value)
+                    if col in [4, 5, 6, 7]:
+                        value = float(int(float(value) / 10000.0)) / 100.0
+                    else:
+                        value = float(value)
                 except:
                     value = None
                 if col == 8 and value is not None:
-                    value *= 100.0
+                    value = int(value * 100.0)
                 data[current_company][current_year][current_month][col - 4] = value
     # for c in companies:
     #     print c

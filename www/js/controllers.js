@@ -57,6 +57,7 @@ angular.module('starter.controllers', ['chart.js'])
     $scope.updateYear2 = function(newYear2) {
         console.log(newYear2);
         $scope.year2 = newYear2;
+        $scope.year1 = newYear2 - 1;
         $scope.updateGraph();
     }
 
@@ -94,20 +95,6 @@ angular.module('starter.controllers', ['chart.js'])
             r10: NalogyData.filter($scope.year2, $scope.query.name, 4)
         }
 
-
-          $scope.result = {
-              r1: NalogyData.filter($scope.year1, $scope.query.name, 0),
-              r2: NalogyData.filter($scope.year2, $scope.query.name, 0),
-              r3: NalogyData.filter($scope.year1, $scope.query.name, 1),
-              r4: NalogyData.filter($scope.year2, $scope.query.name, 1),
-              r5: NalogyData.filter($scope.year1, $scope.query.name, 2),
-              r6: NalogyData.filter($scope.year2, $scope.query.name, 2),
-              r7: NalogyData.filter($scope.year1, $scope.query.name, 3),
-              r8: NalogyData.filter($scope.year2, $scope.query.name, 3),
-              r9: NalogyData.filter($scope.year1, $scope.query.name, 4),
-              r10: NalogyData.filter($scope.year2, $scope.query.name, 4)
-          }
-
           $scope.places = [{
             name: $scope.companies[0],
             v1: $scope.result.r1[$scope.currentMonthIndex],
@@ -144,12 +131,7 @@ angular.module('starter.controllers', ['chart.js'])
 
             $scope.series = [$scope.query.colName, $scope.query.colName];
 
-            $scope.data = [
-              $scope.result.r1,
-              $scope.result.r2,
-              $scope.result.r9,
-              $scope.result.r10
-            ];
+
 
 
         console.log($scope.result);
@@ -174,6 +156,13 @@ angular.module('starter.controllers', ['chart.js'])
       $scope.height = screen.height / 36;
 
       $scope.updateGraph();
+
+      $scope.data = [
+        $scope.result.r1,
+        $scope.result.r2,
+        $scope.result.r9,
+        $scope.result.r10
+      ];
 
       $scope.colors = [
                           {

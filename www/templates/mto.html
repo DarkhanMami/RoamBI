@@ -83,7 +83,7 @@
 	<div class="col">
 
 		<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Замер', 'Резервуар')">
-				Замер vs. Резервуар
+				Склад. запас (млн. тг) (потребн. к склад запасу)
 				<br>
 				<span ng-if="(b1.v1-b1.v2) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="(b1.v1-b1.v2) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -99,7 +99,9 @@
 	</div>
 	<div class="col">
 				<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Сдача нефти', 'добыча нефти')">
-				Сдача  vs. Добыча
+				Списание (млн. тг)  (невостребованные к списаниям)
+
+
 				<br>
 
 				<span ng-if="(b2.v1-b2.v2) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
@@ -115,7 +117,7 @@
 	</div>
 		<div class="col">
 		<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'Рас. т/р', 'техрежим')">
-				Расч. т.р. vs. Техрежим
+				Неликвиды (млн. тг)
 				<br>
 				<span ng-if="((b3.v1-b3.v2)) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b3.v1-b3.v2)) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -130,7 +132,7 @@
 	</div>
 	<div class="col">
 				<ul><li><div class="black-mid-list" ng-click="updateData(query.name, 'зам. доб. с нак', 'доб. н. по рез. с нак')">
-				Зам.доб. vs. Рез.доб.ж.
+				Закупки (млн. тг)
 				<br>
 				<span ng-if="((b4.v1-b4.v2)) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b4.v1-b4.v2)) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -150,10 +152,12 @@
 
 <div class="item item-divider table-heading">
     <div class="row" ng-style="{'margin-top':'-0.5%'}">
-	      <div class="col col-33">Объект</div>
-	      <div class="col">{{query.colName1}}</div>
-	      <div class="col">{{query.colName2}}</div>
+	      <div class="col col-33">Админ. бюдж. программы</div>
+	      <div class="col">Сумма (млн. тг)</div>
+	      <div class="col">Доля(%)</div>
+	      <div class="col">Отклонение(%)</div>
 	      <div class="col">Дата</div>
+
     </div>
 </div>
 
@@ -162,6 +166,7 @@
     <div class="row">
 	      <div class="col col-33"><label class="item item-input table-input" ng-style="{'margin-top':'-2.5%'}"> {{selectedItem.name}} </label> </div>
 	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v1 | number:2}} </label> </div>
+	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v2 | number:2}} </label> </div>
 	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v2 | number:2}} </label> </div>
 	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{currentDay}} {{currentMonth}} </label> </div>
     </div>

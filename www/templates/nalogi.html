@@ -7,11 +7,11 @@
 <div class="bar bar-header black-mid-list-bar">
   <h1 class="title black-mid-list" ng-style="{'font-size':'2vw'}">Анализ налогов</h1>
   
-  <select class="title black-mid-list" ng-model="year1" ng-options="name as name for name in years" ng-change="updateYear1(year1)" ng-style="{'font-size':'2vw' }">
+  <select class="title black-mid-list" ng-model="year1" ng-options="name as name for name in years" ng-change="updateYear1(year1)" ng-style="{'font-size':'2vw'}" style="color:#00cc00;">
 
     </select>
 
-    <select class="title black-mid-list" ng-model="year2" ng-options="name as name for name in years" ng-change="updateYear2(year2)" ng-style="{'font-size':'2vw' }" style="margin-left:100px">
+    <select class="title black-mid-list" ng-model="year2" ng-options="name as name for name in years" ng-change="updateYear2(year2)" ng-style="{'font-size':'2vw' }" style="margin-left:100px; color:#0066ff;" >
 
       </select>
   <!-- <select class="title black-mid-list" ng-model="monthes" ng-options="name as name for name in monthes" ng-item="currentMonth" ng-change="updateMonth()"></select> -->
@@ -31,7 +31,7 @@
 		<h5 class="black-theme" ng-style="{'font-size':'1.3vw'}">{{pretitle}}</h5>
 	</div>
 	<div class="col text-right">
-		<h4 class="black-theme" ng-style="{'font-size':'1.8vw'}">{{currentDay}} {{currentMonth}}</h4>
+		<h4 class="black-theme" ng-style="{'font-size':'1.8vw'}">{{currentDay}} {{currentMonth}} 2016</h4>
 	</div>
 </div>
 
@@ -91,7 +91,7 @@
 	<div class="col">
 
 		<ul><li><div class="black-mid-list" ng-click="updateData()">
-				Налоги, тыс.тг
+				Налоговая нагрузка
 				<br>
 				<span ng-if="(b1.v1-b1.v2) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="(b1.v1-b1.v2) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -158,9 +158,14 @@
 
 <div class="item item-divider table-heading">
     <div class="row" ng-style="{'margin-top':'-0.5%'}">
-	      <div class="col col-33">Объект</div>
-	      <div class="col">{{query.colName1}}</div>
-	      <div class="col">{{query.colName2}}</div>
+	      <div class="col col-33">Статья нал.учета</div>
+	      <!--<div class="col">{{query.colName1}}</div>
+	      <div class="col">{{query.colName2}}</div>-->
+
+	      <div class="col">Бюджет(млн.тг)</div>
+	      <div class="col">Доля нал.нагрузки(%)</div>
+	      <div class="col">Прогноз(млн.тг)</div>
+
 	      <div class="col">Месяц</div>
     </div>
 </div>
@@ -170,6 +175,7 @@
     <div class="row">
 	      <div class="col col-33"><label class="item item-input table-input" ng-style="{'margin-top':'-2.5%'}"> {{selectedItem.name}} </label> </div>
 	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v1 | number:2}} </label> </div>
+	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v2 | number:2}} </label> </div>
 	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{selectedItem.v2 | number:2}} </label> </div>
 	      <div class="col"><label class="item item-input table-input" ng-style="{'margin-top':'-4%'}"> {{currentDay}} {{currentMonth}} </label> </div>
     </div>

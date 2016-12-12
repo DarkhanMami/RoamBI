@@ -1,33 +1,25 @@
 <ion-view view-title="Browse" class="black-theme">
+    <ion-header-bar align-title="center" class="bar-dark">
+      <div class="buttons">
+          <!-- <bu ng-model="year1" ng-options="name as name for name in years1">
+            </select> -->
+            <button class="year1" ng-style="{'font-size':'2vw'}">{{year1}}</button> &nbsp&nbsp
+            <select ng-model="year2" class="button button-positive" ng-options="name as name for name in years" ng-change="updateYear2(year2)" ng-style="{'font-size':'2vw'}">
+              </select>
+        </div>
+            <!-- <div class="buttons">
+            <select ng-model="year2" class="button" ng-options="name as name for name in years" ng-change="updateYear2(year2)" >
+              </select>
+      </div> -->
+      <h1 class="title">Анализ налогов по месяцам</h1>
+      <div class="buttons">
+          <i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
+        <!-- <button class="button">обновить</button> -->
+      </div>
+    </ion-header-bar>
   <ion-content class="black-theme" scroll="true">
 
 <div ng-show="show">
-
-
-<div class="bar bar-header black-mid-list-bar">
-  <h1 class="title black-mid-list" ng-style="{'font-size':'2vw'}">Анализ налогов по месяцам</h1>
-
-  <select class="title black-mid-list" ng-model="year1" ng-options="name as name for name in years1" ng-style="{'font-size':'2vw'}" style="color:#00cc00;" >
-
-    </select>
-
-
-    <select class="title black-mid-list" ng-model="year2" ng-options="name as name for name in years" ng-change="updateYear2(year2)" ng-style="{'font-size':'2vw' }" style="margin-left:100px; color:#0066ff;">
-
-      </select>
-
-
-
-  <!-- <select class="title black-mid-list" ng-model="monthes" ng-options="name as name for name in monthes" ng-item="currentMonth" ng-change="updateMonth()"></select> -->
-
-
-
-  <i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
-
-
-</div>
-
-<br>
 
 <div class="row padding-h">
 	<div class="col">
@@ -38,7 +30,6 @@
 		<h4 class="black-theme" ng-style="{'font-size':'1.8vw'}">{{currentDay}} {{currentMonth}} 2016</h4>
 	</div>
 </div>
-
 
 <div class="row">
 		<div class="col">

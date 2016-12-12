@@ -5,6 +5,26 @@ div{
 }
 
 
+.year1 {
+    border-color: transparent;
+    background-color: #00cc00;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0 12px;
+    min-width: 52px;
+    min-height: 47px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 42px;
+    cursor: pointer;
+}
 
 .text-right{
      text-align:right;
@@ -57,13 +77,13 @@ div{
 }
 
 .color-good{
-    
+
     color: #83de32;
 
 }
 
 .color-good2{
-    
+
     color: #4e7d27;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #83de32;
@@ -85,7 +105,7 @@ line-height: 1.5;
 .button-row{
 
     color: #ffffff;
-	width: 95%; 
+	width: 95%;
 
 	background: #2D2D32;
     border: 5px solid #19191E;
@@ -98,7 +118,7 @@ line-height: 1.5;
     display:block;
     float:right;
 
-    
+
 	background: #19191E;
     color: #ffffff;
 }
@@ -124,9 +144,9 @@ line-height: 1.5;
 
 .table-heading{
 
-	font-weight: bold; 
+	font-weight: bold;
 	text-align: center;
-	padding-top: 0px; 
+	padding-top: 0px;
 	padding-bottom: 0px;
 	background: #2D2D32;
 	color: #ffffff;
@@ -135,19 +155,19 @@ line-height: 1.5;
 
 }
 .table-heading2{
-	
-	font-weight: bold; 
-	padding-top: 0px; 
+
+	font-weight: bold;
+	padding-top: 0px;
 	padding-bottom: 0px;
 	background: #2D2D32;
 	border-color: #2D2D32;
 
- 	
+
 }
 
 .table-content{
 	color: #CCC;
-	padding-top: 0px; 
+	padding-top: 0px;
 	padding-bottom: 0px;
 	background: #50505A;
 	border-color: #2D2D32;
@@ -158,20 +178,20 @@ line-height: 1.5;
 
 
 .table-input{
-	font-weight: bold; 
+	font-weight: bold;
 	color:#83de32;
 	background: #50505A;
-	border-color: #50505A; 
+	border-color: #50505A;
 	font-size: 1.3vw;
-	
+
 }
 
 .black-top-list {
     background: #19191E;
     color: #ffffff;
-    border-color: #19191E; 
+    border-color: #19191E;
     margin-left: 10%;
-	padding-top: 0%; 
+	padding-top: 0%;
 	padding-bottom: 0%;
 	font-size: 1.2vw;
 }

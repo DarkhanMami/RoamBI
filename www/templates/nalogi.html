@@ -7,7 +7,7 @@
 <div class="bar bar-header black-mid-list-bar">
   <h1 class="title black-mid-list" ng-style="{'font-size':'2vw'}">Анализ налогов по месяцам</h1>
 
-  <select class="title black-mid-list" ng-model="year1" ng-options="name as name for name in years" ng-style="{'font-size':'2vw'}" style="color:#00cc00;" >
+  <select class="title black-mid-list" ng-model="year1" ng-options="name as name for name in years1" ng-style="{'font-size':'2vw'}" style="color:#00cc00;" >
 
     </select>
 
@@ -88,13 +88,13 @@
     				<br>
 		  			<h ng-style="{'font-size':'1.7vw'}">{{lastyear1}} %</h>
 		  			<br>
-		  			за {{year1}} год 
+		  			за {{year1}} год
     			</div>
     			<div class="item black-top-list">
     				<br>
 		  			<h ng-style="{'font-size':'1.7vw'}">{{lastyear2}} %</h>
 		  			<br>
-		  			за {{year2}} год 
+		  			за {{year2}} год
     			</div>
 			</div>
 
@@ -140,7 +140,7 @@
 				<h ng-style="{'font-size':'1.8vw'}">{{b2.v1-b2.v2 | number:1}}</h>
 				<br>
 				<span ng-if="((b2.v1-b2.v2) / b2.v1 * 100) > 0"> + {{(b2.v1-b2.v2) / b2.v1 * 100 | number:1}}% </span>
-				<span ng-if="(((b2.v1-b2.v2) / b2.v1 * 100) <= 0) && (((b2.v1-b2.v2) / b2.v1 * 100) > -100)">
+				<span ng-if="(((b2.v1-b2.v2) / b2.v1 * 100) <= 0) && (((b2.v1-b2.v2) / b2.v1 * 100) > -10000)">
 				{{(b2.v1-b2.v2) / b2.v1 * 100 | number:1}}% </span>
 				<span ng-if="b2.v1 == 0" >  &nbsp </span>
 		</div></li></ul>
@@ -155,7 +155,7 @@
 				<h ng-style="{'font-size':'1.8vw'}">{{b3.v1-b3.v2 | number:1}}</h>
 				<br>
 				<span ng-if="((b3.v1-b3.v2) / b3.v1 * 100) > 0"> + {{(b3.v1-b3.v2) / b3.v1 * 100 | number:1}}% </span>
-				<span ng-if="(((b3.v1-b3.v2) / b3.v1 * 100) <= 0) && (((b3.v1-b3.v2) / b3.v1 * 100) > -100)">
+				<span ng-if="(((b3.v1-b3.v2) / b3.v1 * 100) <= 0) && (((b3.v1-b3.v2) / b3.v1 * 100) > -10000)">
 				{{(b3.v1-b3.v2) / b3.v1 * 100 | number:1}}% </span>
 				<span ng-if="b3.v1 == 0" >  &nbsp </span>
 		</div></li></ul>
@@ -170,7 +170,7 @@
 				<h ng-style="{'font-size':'1.8vw'}">{{b4.v1-b4.v2 | number:1}}</h>
 				<br>
 				<span ng-if="((b4.v1-b4.v2) / b4.v1 * 100) > 0"> + {{(b4.v1-b4.v2) / b4.v1 * 100 | number:1}}% </span>
-				<span ng-if="(((b4.v1-b4.v2) / b4.v1 * 100) <= 0) && (((b4.v1-b4.v2) / b4.v1 * 100) > -100)">
+				<span ng-if="(((b4.v1-b4.v2) / b4.v1 * 100) <= 0) && (((b4.v1-b4.v2) / b4.v1 * 100) > -10000)">
 				{{(b4.v1-b4.v2) / b4.v1 * 100 | number:1}}% </span>
 				<span ng-if="b4.v1 == 0" >  &nbsp </span>
 		</div></li></ul>

@@ -57,7 +57,9 @@ angular.module('starter.controllers', ['chart.js'])
     $scope.updateYear2 = function(newYear2) {
         console.log(newYear2);
         $scope.year2 = newYear2;
+        $scope.years1 = [newYear2 - 1];
         $scope.year1 = newYear2 - 1;
+        // $scope.years1 = [$scope.year1];
         $scope.updateGraph();
         $scope.data = [
           $scope.result.r1,
@@ -65,8 +67,7 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r9,
           $scope.result.r10
         ];
-        $scope.lastyear1 = $scope.result.r9[$scope.result.r9.length - 1];
-        $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
+        // $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
     }
 
 
@@ -130,7 +131,7 @@ angular.module('starter.controllers', ['chart.js'])
               };
           };
 
-          
+
 
 
           $scope.b1 = {
@@ -151,22 +152,37 @@ angular.module('starter.controllers', ['chart.js'])
           };
 
 
-            $scope.labels = ['янв', 'фев', 'март', 'апр', 'май', 'июнь', 'июль','авг', 'сен', 'окт', 'ноя', 'дек'];
+        $scope.labels = ['янв', 'фев', 'март', 'апр', 'май', 'июнь', 'июль','авг', 'сен', 'окт', 'ноя', 'дек'];
 
-            $scope.series = [$scope.query.colName, $scope.query.colName];
+        $scope.series = [$scope.query.colName, $scope.query.colName];
 
+        for (i in $scope.result.r9) {
+            if ($scope.result.r9[i]) {
+                $scope.lastyear1 = $scope.result.r9[i];
+            }
+        }
+        for (i in $scope.result.r10) {
+            if ($scope.result.r10[i]) {
+                $scope.lastyear2 = $scope.result.r10[i];
 
+            }
+        }
 
+        $scope.lastyear2;
 
         console.log($scope.result);
+
     }
 
     var run = function() {
 
       $scope.companies = NalogyData.getCompanies();
-      $scope.years = NalogyData.getYears();
+      var years = NalogyData.getYears();
+      $scope.years = years.slice(0, years.length - 1);
+    //   console.log($scope.years);
       $scope.monthes = NalogyData.getMonthes();
       $scope.year1 = 2015;
+      $scope.years1 = [2015];
       $scope.year2 = 2016;
 
       $scope.query = {
@@ -187,8 +203,17 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.result.r9,
         $scope.result.r10
       ];
-      $scope.lastyear1 = $scope.result.r9[$scope.result.r9.length - 1];
-      $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
+      for (i in $scope.result.r9) {
+          if ($scope.result.r9[i]) {
+              $scope.lastyear1 = $scope.result.r9[i];
+          }
+      }
+      for (i in $scope.result.r10) {
+          if ($scope.result.r10[i]) {
+              $scope.lastyear2 = $scope.result.r10[i];
+          }
+      }
+    //   $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
 
       $scope.colors = [
                           {
@@ -256,9 +281,8 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r10
         ];
 
-        $scope.lastyear1 = $scope.result.r9[$scope.result.r9.length - 1];
-        $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
-        
+        // $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
+
         $scope.selectedItem.v1 = $scope.result.r1[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r2[$scope.currentMonthIndex];
 
@@ -411,7 +435,7 @@ angular.module('starter.controllers', ['chart.js'])
               $scope.result.r3,
               $scope.result.r1,
               $scope.result.r2
-              
+
             ];
 
 
@@ -512,7 +536,7 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r6,
           $scope.result.r4,
           $scope.result.r5,
-          
+
         ];
 
         $scope.places = [{
@@ -532,7 +556,7 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r9,
           $scope.result.r7,
           $scope.result.r8,
-          
+
         ];
 
         $scope.places = [{

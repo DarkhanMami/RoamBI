@@ -59,14 +59,16 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.year2 = newYear2;
         $scope.year1 = newYear2 - 1;
         $scope.updateGraph();
+        $scope.data = [
+          $scope.result.r1,
+          $scope.result.r2,
+          $scope.result.r9,
+          $scope.result.r10
+        ];
+        $scope.lastyear1 = $scope.result.r9[$scope.result.r9.length - 1];
+        $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
     }
 
-    $scope.updateYear1 = function(newYear1) {
-        console.log(newYear1);
-        $scope.year1 = newYear1;
-        $scope.updateGraph();
-
-    }
 
     $scope.currentMonthIndex = 0;
 
@@ -102,11 +104,33 @@ angular.module('starter.controllers', ['chart.js'])
           }];
 
 
-          $scope.selectedItem = {
-              name: $scope.query.name,
-              v1: $scope.result.r1[$scope.currentMonthIndex],
-              v2: $scope.result.r2[$scope.currentMonthIndex]
+          if ($scope.pretitle == "Налоговая нагрузка") {
+              $scope.selectedItem = {
+                name: $scope.query.name,
+                v1: $scope.result.r1[$scope.currentMonthIndex],
+                v2: $scope.result.r2[$scope.currentMonthIndex]
+              };
+          } else if ($scope.pretitle == "Налоги, (нарас.) млн.тг") {
+              $scope.selectedItem = {
+                name: $scope.query.name,
+                v1: $scope.result.r3[$scope.currentMonthIndex],
+                v2: $scope.result.r4[$scope.currentMonthIndex]
+              };
+          } else if ($scope.pretitle == "Доход, млн.тг") {
+              $scope.selectedItem = {
+                name: $scope.query.name,
+                v1: $scope.result.r5[$scope.currentMonthIndex],
+                v2: $scope.result.r6[$scope.currentMonthIndex]
+              };
+          } else if ($scope.pretitle == "Доход, (нарас.) млн.тг") {
+              $scope.selectedItem = {
+                name: $scope.query.name,
+                v1: $scope.result.r7[$scope.currentMonthIndex],
+                v2: $scope.result.r8[$scope.currentMonthIndex]
+              };
           };
+
+          
 
 
           $scope.b1 = {
@@ -149,7 +173,7 @@ angular.module('starter.controllers', ['chart.js'])
           name: $scope.companies[0],
       }
 
-      $scope.pretitle = 'Налоги, тыс.тг';
+      $scope.pretitle = 'Налоговая нагрузка';
 
       $scope.currentMonth = NalogyData.getMonthes()[0];
 
@@ -163,6 +187,8 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.result.r9,
         $scope.result.r10
       ];
+      $scope.lastyear1 = $scope.result.r9[$scope.result.r9.length - 1];
+      $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
 
       $scope.colors = [
                           {
@@ -230,6 +256,9 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r10
         ];
 
+        $scope.lastyear1 = $scope.result.r9[$scope.result.r9.length - 1];
+        $scope.lastyear2 = $scope.result.r10[$scope.result.r10.length - 1];
+        
         $scope.selectedItem.v1 = $scope.result.r1[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r2[$scope.currentMonthIndex];
 
@@ -240,7 +269,7 @@ angular.module('starter.controllers', ['chart.js'])
         }];
 
         $scope.options.scales.yAxes[1].display = true;
-        $scope.pretitle = 'Налоги, тыс.тг';
+        $scope.pretitle = 'Налоговая нагрузка';
       }
 
       $scope.updateData2 = function() {
@@ -259,7 +288,7 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.selectedItem.v2 = $scope.result.r4[$scope.currentMonthIndex];
 
         $scope.options.scales.yAxes[1].display = false;
-        $scope.pretitle = 'Налоги, (нарас.) тыс.тг';
+        $scope.pretitle = 'Налоги, (нарас.) млн.тг';
       }
       $scope.updateData3 = function() {
         $scope.data = [
@@ -277,7 +306,7 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.selectedItem.v2 = $scope.result.r6[$scope.currentMonthIndex];
 
         $scope.options.scales.yAxes[1].display = false;
-        $scope.pretitle = 'Доход, тыс.тг';
+        $scope.pretitle = 'Доход, млн.тг';
       }
 
       $scope.updateData4 = function() {
@@ -296,7 +325,7 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.selectedItem.v2 = $scope.result.r8[$scope.currentMonthIndex];
 
         $scope.options.scales.yAxes[1].display = false;
-        $scope.pretitle = 'Доход, (нарас.) тыс.тг';
+        $scope.pretitle = 'Доход, (нарас.) млн.тг';
       }
 
 

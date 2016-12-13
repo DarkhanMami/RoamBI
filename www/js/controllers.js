@@ -11,12 +11,7 @@ angular.module('starter.controllers', ['chart.js'])
 
   // Form data for the login modal
 
-  $scope.goTo = function(stateName) {
-      $ionicHistory.nextViewOptions({
-        historyRoot: true
-      });
-      $state.go(stateName);
-  }
+
 
 })
 .controller('TestCtrl', function($scope, Data) {
@@ -50,7 +45,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 
-.controller('NalogyCtrl', function($scope, NalogyData, $ionicPopover) {
+.controller('NalogyCtrl', function($scope, NalogyData, $ionicPopover, $state, $ionicHistory) {
     $scope.show = false;
     var promise = NalogyData.init();
     // $scope.currentMonth = "";
@@ -66,6 +61,14 @@ angular.module('starter.controllers', ['chart.js'])
       }).then(function(popover) {
         $scope.popover = popover;
      });
+
+    $scope.goTo = function(stateName) {
+      $ionicHistory.nextViewOptions({
+        historyRoot: true
+      });
+      $scope.popover.hide();
+      $state.go(stateName);
+    }
 
     $scope.updateYear2 = function(newYear2) {
         console.log(newYear2);
@@ -393,7 +396,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 
-.controller('YearNalogyCtrl', function($scope, NalogyData, $ionicPopover) {
+.controller('YearNalogyCtrl', function($scope, NalogyData, $ionicPopover, $state, $ionicHistory) {
     $scope.show = false;
     var promise = NalogyData.init();
     // $scope.currentMonth = "";
@@ -409,6 +412,16 @@ angular.module('starter.controllers', ['chart.js'])
       }).then(function(popover) {
         $scope.popover = popover;
      });
+
+    $scope.goTo = function(stateName) {
+      $ionicHistory.nextViewOptions({
+        historyRoot: true
+      });
+      $scope.popover.hide();
+      $state.go(stateName);
+    }
+
+
 
     $scope.currentMonthIndex = 0;
 

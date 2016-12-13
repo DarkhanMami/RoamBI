@@ -13,8 +13,11 @@
       </div> -->
       <h1 class="title">Анализ налогов по месяцам</h1>
       <div class="buttons">
-          <i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
-        <!-- <button class="button">обновить</button> -->
+      		<select class="button button-clear button-calm" ng-style="{'font-size':'2vw'}">
+      			<option value="#/app/nalogi">Данные по месяцам</option>
+      			<option value="#/app/yearnalogi">Данные по годам</option>      			
+      		</select>
+          	<i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
       </div>
     </ion-header-bar>
   <ion-content class="black-theme" scroll="true">
@@ -122,7 +125,7 @@
 	</div>
 	<div class="col">
 				<ul><li><div class="black-mid-list" ng-click="updateData2()">
-				Налоги, (нарас.) млн. тг
+				Зачет, не зачет (млн. тг)
 				<br>
 
 				<span ng-if="(b2.v1-b2.v2) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
@@ -138,7 +141,7 @@
 	</div>
 		<div class="col">
 		<ul><li><div class="black-mid-list" ng-click="updateData3()">
-				Доход, млн. тг
+				Штрафы, пени (млн. тг)
 				<br>
 				<span ng-if="((b3.v1-b3.v2)) >= 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b3.v1-b3.v2)) < 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
@@ -153,8 +156,9 @@
 	</div>
 	<div class="col">
 				<ul><li><div class="black-mid-list" ng-click="updateData4()">
-				Доход, (нарас.) млн. тг
+				Начисленные, выплаченные (млн. тг)
 				<br>
+				
 				<span ng-if="((b4.v1-b4.v2)) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b4.v1-b4.v2)) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 
@@ -179,7 +183,7 @@
 
 	      <div class="col">Бюджет(млн.тг)</div>
 	      <div class="col">Доля нал.нагрузки(%)</div>
-	      <div class="col">Прогноз(млн.тг)</div>
+	      <div class="col">Риски(млн.тг)</div>
 
 	      <div class="col">Месяц</div>
     </div>

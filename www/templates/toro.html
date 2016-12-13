@@ -1,21 +1,18 @@
 <ion-view view-title="Browse" class="black-theme">
+    <ion-header-bar align-title="center" class="bar-dark">
+      <div class="buttons">
+		  <select class="button" ng-model="currentMonth" ng-options="name as name for name in monthes" ng-change="updateMonth(currentMonth)" ng-style="{'font-size':'2vw'}">
+	    	</select>
+        </div>
+      <h1 class="title">Анализ ТОРО</h1>
+      <div class="buttons">
+          <i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
+      </div>
+    </ion-header-bar>
+
   <ion-content class="black-theme" scroll="true">
 
 <div ng-show="show">
-
-
-<div class="bar bar-header black-mid-list-bar">
-  <h1 class="title black-mid-list" ng-style="{'font-size':'2vw'}">Анализ ТОРО</h1>
-  <select class="title black-mid-list" ng-model="currentMonth" ng-options="name as name for name in monthes" ng-change="updateMonth(currentMonth)" ng-style="{'font-size':'2vw'}">
-
-    </select>
-  <!-- <select class="title black-mid-list" ng-model="monthes" ng-options="name as name for name in monthes" ng-item="currentMonth" ng-change="updateMonth()"></select> -->
-  <i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
-
-
-</div>
-
-<br>
 
 <div class="row padding-h">
 	<div class="col">

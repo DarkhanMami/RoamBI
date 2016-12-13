@@ -102,7 +102,27 @@ angular.module('starter.controllers', ['chart.js'])
             name: $scope.companies[0],
             v1: $scope.result.r1[$scope.currentMonthIndex],
             v2: $scope.result.r2[$scope.currentMonthIndex]
-          }];
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+          
+          ];
 
 
           if ($scope.pretitle == "Налоговая нагрузка") {

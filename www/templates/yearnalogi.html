@@ -1,13 +1,15 @@
 <ion-view view-title="Browse" class="black-theme">
-  
+
   <ion-header-bar align-title="center" class="bar-dark">
 
       <h1 class="title">Анализ налогов по годам</h1>
       <div class="buttons">
-      		<select class="button button-clear button-calm" ng-style="{'font-size':'2vw'}">
+      		<!-- <select class="button button-clear button-calm" ng-style="{'font-size':'2vw'}">
       			<option value="#/app/nalogi">Данные по месяцам</option>
-      			<option value="#/app/yearnalogi">Данные по годам</option>      			
-      		</select>
+      			<option value="#/app/yearnalogi">Данные по годам</option>
+      		</select> -->
+            <button class="button button-icon ion-more" ng-click="popover.show($event)">
+        </button>
           <i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
       </div>
     </ion-header-bar>

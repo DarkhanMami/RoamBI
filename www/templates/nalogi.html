@@ -13,10 +13,12 @@
       </div> -->
       <h1 class="title">Анализ налогов по месяцам</h1>
       <div class="buttons">
-      		<select class="button button-clear button-calm" ng-style="{'font-size':'2vw'}">
+      		<!-- <select class="button button-clear button-calm" ng-style="{'font-size':'2vw'}">
       			<option value="#/app/nalogi">Данные по месяцам</option>
-      			<option value="#/app/yearnalogi">Данные по годам</option>      			
-      		</select>
+      			<option value="#/app/yearnalogi">Данные по годам</option>
+      		</select> -->
+            <button class="button button-icon ion-more" ng-click="popover.show($event)">
+        </button>
           	<i class="button button-icon ion-android-refresh small" style="color:#ffffff;"></i>
       </div>
     </ion-header-bar>
@@ -158,7 +160,7 @@
 				<ul><li><div class="black-mid-list" ng-click="updateData4()">
 				Начисленные, выплаченные (млн. тг)
 				<br>
-				
+
 				<span ng-if="((b4.v1-b4.v2)) > 0"> <i class=" ion-arrow-up-b big-2 color-good"></i> </span>
 				<span ng-if="((b4.v1-b4.v2)) <= 0"> <i class=" ion-arrow-down-b big-2 color-danger"></i> </span>
 

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['chart.js'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicHistory, $state) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -10,6 +10,13 @@ angular.module('starter.controllers', ['chart.js'])
   //});
 
   // Form data for the login modal
+
+  $scope.goTo = function(stateName) {
+      $ionicHistory.nextViewOptions({
+        historyRoot: true
+      });
+      $state.go(stateName);
+  }
 
 })
 .controller('TestCtrl', function($scope, Data) {
@@ -43,7 +50,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 
-.controller('NalogyCtrl', function($scope, NalogyData) {
+.controller('NalogyCtrl', function($scope, NalogyData, $ionicPopover) {
     $scope.show = false;
     var promise = NalogyData.init();
     // $scope.currentMonth = "";
@@ -53,6 +60,12 @@ angular.module('starter.controllers', ['chart.js'])
     }, function(reason) {
         console.log(reason);
     });
+
+    $ionicPopover.fromTemplateUrl('templates/popover.html', {
+        scope: $scope,
+      }).then(function(popover) {
+        $scope.popover = popover;
+     });
 
     $scope.updateYear2 = function(newYear2) {
         console.log(newYear2);
@@ -121,7 +134,7 @@ angular.module('starter.controllers', ['chart.js'])
           {
             name: 'Пени'
           }
-          
+
           ];
 
 
@@ -380,7 +393,7 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 
-.controller('YearNalogyCtrl', function($scope, NalogyData) {
+.controller('YearNalogyCtrl', function($scope, NalogyData, $ionicPopover) {
     $scope.show = false;
     var promise = NalogyData.init();
     // $scope.currentMonth = "";
@@ -391,6 +404,11 @@ angular.module('starter.controllers', ['chart.js'])
         console.log(reason);
     });
 
+    $ionicPopover.fromTemplateUrl('templates/popover.html', {
+        scope: $scope,
+      }).then(function(popover) {
+        $scope.popover = popover;
+     });
 
     $scope.currentMonthIndex = 0;
 

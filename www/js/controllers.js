@@ -322,11 +322,31 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.selectedItem.v1 = $scope.result.r1[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r2[$scope.currentMonthIndex];
 
-        $scope.places = [{
-          name: $scope.companies[0],
-          v1: $scope.result.r1[$scope.currentMonthIndex],
-          v2: $scope.result.r2[$scope.currentMonthIndex]
-        }];
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r1[$scope.currentMonthIndex],
+            v2: $scope.result.r2[$scope.currentMonthIndex]
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+
+          ];
 
         $scope.options.scales.yAxes[1].display = true;
         $scope.pretitle = 'Налоговая нагрузка';
@@ -338,11 +358,31 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r4
         ];
 
-        $scope.places = [{
-          name: $scope.companies[0],
-          v1: $scope.result.r3[$scope.currentMonthIndex],
-          v2: $scope.result.r4[$scope.currentMonthIndex]
-        }];
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r3[$scope.currentMonthIndex],
+            v2: $scope.result.r4[$scope.currentMonthIndex]
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+
+          ];
 
         $scope.selectedItem.v1 = $scope.result.r3[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r4[$scope.currentMonthIndex];
@@ -356,11 +396,31 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r6
         ];
 
-        $scope.places = [{
-          name: $scope.companies[0],
-          v1: $scope.result.r5[$scope.currentMonthIndex],
-          v2: $scope.result.r6[$scope.currentMonthIndex]
-        }];
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r5[$scope.currentMonthIndex],
+            v2: $scope.result.r6[$scope.currentMonthIndex]
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+
+          ];
 
         $scope.selectedItem.v1 = $scope.result.r5[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r6[$scope.currentMonthIndex];
@@ -375,11 +435,31 @@ angular.module('starter.controllers', ['chart.js'])
           $scope.result.r8
         ];
 
-        $scope.places = [{
-          name: $scope.companies[0],
-          v1: $scope.result.r7[$scope.currentMonthIndex],
-          v2: $scope.result.r8[$scope.currentMonthIndex]
-        }];
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r7[$scope.currentMonthIndex],
+            v2: $scope.result.r8[$scope.currentMonthIndex]
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+
+          ];
 
         $scope.selectedItem.v1 = $scope.result.r7[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r8[$scope.currentMonthIndex];
@@ -454,7 +534,27 @@ angular.module('starter.controllers', ['chart.js'])
             name: $scope.companies[0],
             v1: $scope.result.r1[$scope.currentMonthIndex],
             v2: $scope.result.r2[$scope.currentMonthIndex]
-          }];
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+
+          ];
 
 
           $scope.selectedItem = {
@@ -572,11 +672,31 @@ angular.module('starter.controllers', ['chart.js'])
         $scope.selectedItem.v1 = $scope.result.r1[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r2[$scope.currentMonthIndex];
 
-        $scope.places = [{
-          name: $scope.companies[0],
-          v1: $scope.result.r1[$scope.currentMonthIndex],
-          v2: $scope.result.r2[$scope.currentMonthIndex]
-        }];
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r1[$scope.currentMonthIndex],
+            v2: $scope.result.r2[$scope.currentMonthIndex]
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+
+          ];
 
         $scope.options.scales.yAxes[1].display = true;
         $scope.pretitle = 'Налоговая нагрузка';
@@ -590,11 +710,31 @@ angular.module('starter.controllers', ['chart.js'])
 
         ];
 
-        $scope.places = [{
-          name: $scope.companies[0],
-          v1: $scope.result.r4[$scope.currentMonthIndex],
-          v2: $scope.result.r5[$scope.currentMonthIndex]
-        }];
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r4[$scope.currentMonthIndex],
+            v2: $scope.result.r5[$scope.currentMonthIndex]
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+
+          ];
 
         $scope.selectedItem.v1 = $scope.result.r4[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r5[$scope.currentMonthIndex];
@@ -610,11 +750,31 @@ angular.module('starter.controllers', ['chart.js'])
 
         ];
 
-        $scope.places = [{
-          name: $scope.companies[0],
-          v1: $scope.result.r7[$scope.currentMonthIndex],
-          v2: $scope.result.r8[$scope.currentMonthIndex]
-        }];
+          $scope.places = [{
+            name: $scope.companies[0],
+            v1: $scope.result.r7[$scope.currentMonthIndex],
+            v2: $scope.result.r8[$scope.currentMonthIndex]
+          },
+          {
+            name: 'КПН'
+          },
+          {
+            name: 'НДС'
+          },
+          {
+            name: 'Соц. налоги'
+          },
+          {
+            name: 'НДПИ'
+          },
+          {
+            name: 'Штрафы'
+          },
+          {
+            name: 'Пени'
+          }
+
+          ];
 
         $scope.selectedItem.v1 = $scope.result.r7[$scope.currentMonthIndex];
         $scope.selectedItem.v2 = $scope.result.r8[$scope.currentMonthIndex];

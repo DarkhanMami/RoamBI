@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['chart.js'])
+angular.module('starter.controllers', ['chart.js', 'ngTable'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicHistory, $state) {
 
@@ -790,7 +790,12 @@ angular.module('starter.controllers', ['chart.js'])
 
 })
 
-.controller("BarCtrl", function($scope, Data, $ionicLoading, $http, $timeout) {
+
+
+
+
+
+.controller("BarCtrl", function($scope, Data, $ionicLoading, $http, $timeout, NgTableParams) {
     $scope.show = false;
     var promise = Data.init();
     // $scope.currentMonth = "";
@@ -802,9 +807,20 @@ angular.module('starter.controllers', ['chart.js'])
     });
 
     var run = function() {
+
+
         $scope.colNames = Data.getColNames();
         console.log('getting places');
         $scope.places = Data.getPlaces(1, $scope.colNames[3], $scope.colNames[5]);
+
+        $scope.sortKey = 'name';
+        $scope.reverse = true;
+
+        $scope.sort = function(keyname){
+                $scope.sortKey = keyname;   //set the sortKey to the param passed
+                $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        };
+
 
 
         // Test default name & columns
@@ -812,7 +828,7 @@ angular.module('starter.controllers', ['chart.js'])
             name: $scope.places[0].name,
             colName1: $scope.colNames[3],
             colName2: $scope.colNames[5]
-        }
+        };
 
         $scope.b1 = Data.getSingleData($scope.query.name, 1, "Замер", "Резервуар");
         $scope.b2 = Data.getSingleData($scope.query.name, 1, "Сдача нефти", "добыча нефти");

@@ -143,13 +143,17 @@
 </div>
 
 
-
-
 <div class="item item-divider table-heading">
     <div class="row" ng-style="{'margin-top':'-0.5%'}">
-	      <div class="col col-33">Объект</div>
-	      <div class="col">{{query.colName1}}</div>
-	      <div class="col">{{query.colName2}}  (обр. расчет)</div>
+	      <div class="col col-33" ng-click="sort('name')">Объект
+	      		<span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse, 'glyphicon-chevron-down':!reverse}"></span>
+	      </div>
+	      <div class="col" ng-click="sort('v1')">{{query.colName1}}
+	      		<span class="glyphicon sort-icon" ng-show="sortKey=='v1'" ng-class="{'glyphicon-chevron-up':reverse, 'glyphicon-chevron-down':!reverse}"></span>
+	      </div>
+	      <div class="col" ng-click="sort('v2')">{{query.colName2}}  (обр. расчет)
+	      		<span class="glyphicon sort-icon" ng-show="sortKey=='v2'" ng-class="{'glyphicon-chevron-up':reverse, 'glyphicon-chevron-down':!reverse}"></span>
+	      </div>
 	      <div class="col">Дата</div>
     </div>
 </div>
@@ -165,7 +169,7 @@
 </div>
 
 
-	<ion-scroll direction="y" ng-style="{height:height+'vh'}" overflow-scroll="false" >
+	<!-- <ion-scroll direction="y" ng-style="{height:height+'vh'}" overflow-scroll="false" >
 
 		<div class="item table-content" collection-repeat="item in places" item-height="37" ng-click="raw_selected(item.name)">
 	            <div class="row">
@@ -177,6 +181,23 @@
 	        </div>
 
 	</ion-scroll>
+ -->
+
+
+
+	<ion-scroll direction="y" ng-style="{height:height+'vh'}" overflow-scroll="false" >
+
+		<div class="item table-content" collection-repeat="item in places|orderBy:sortKey:reverse" item-height="37" ng-click="raw_selected(item.name)">
+	            <div class="row">
+	              <div class="col">{{item.name}}</div>
+	              <div class="col">{{item.v1 | number:2}}</div>
+	              <div class="col">{{item.v2 | number:2}}</div>
+	              <div class="col"></div>
+	            </div>
+	        </div>
+
+	</ion-scroll>
+
 
 
 
